@@ -1,6 +1,6 @@
 /*
  *  CommonType.c
- *  MacBlueTelnet
+ *  Nally
  *
  *  Created by Yung-Luen Lan on 12/7/07.
  *  Copyright 2007 yllan.org. All rights reserved.

@@ -1,6 +1,6 @@
 //
 //  YLSSH.m
-//  MacBlueTelnet
+//  Nally
 //
 //  Created by Lan Yung-Luen on 12/7/07.
 //  Copyright 2007 yllan.org. All rights reserved.

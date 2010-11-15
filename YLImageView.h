@@ -1,6 +1,6 @@
 //
 //  YLImageView.h
-//  MacBlueTelnet
+//  Nally
 //
 //  Created by Jjgod Jiang on 3/27/08.
 //  Copyright 2008 Jjgod Jiang. All rights reserved.

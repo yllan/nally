@@ -1,6 +1,6 @@
 //
 //  YLLGlobalConfig.m
-//  MacBlueTelnet
+//  Nally
 //
 //  Created by Yung-Luen Lan on 2006/11/12.
 //  Copyright 2006 yllan.org. All rights reserved.

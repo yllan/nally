@@ -1,6 +1,6 @@
 //
 //  YLMarkedTextView.h
-//  MacBlueTelnet
+//  Nally
 //
 //  Created by Yung-Luen Lan on 9/29/07.
 //  Copyright 2007 yllan.org. All rights reserved.
