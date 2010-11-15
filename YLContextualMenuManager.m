@@ -1,6 +1,6 @@
 //
 //  YLContextualMenuManager.m
-//  MacBlueTelnet
+//  Nally
 //
 //  Created by Yung-Luen Lan on 11/28/07.
 //  Copyright 2007 yllan.org. All rights reserved.

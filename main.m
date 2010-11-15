@@ -1,6 +1,6 @@
 //
 //  main.m
-//  MacBlueTelnet
+//  Nally
 //
 //  Created by Yung-Luen Lan on 2006/6/9.
 //  Copyright yllan.org 2006. All rights reserved.

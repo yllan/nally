@@ -1,6 +1,6 @@
 //
 //  YLController.m
-//  MacBlueTelnet
+//  Nally
 //
 //  Created by Yung-Luen Lan on 9/11/07.
 //  Copyright 2007 yllan.org. All rights reserved.

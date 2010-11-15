@@ -1,6 +1,6 @@
 //
 //  YLView.h
-//  MacBlueTelnet
+//  Nally
 //
 //  Created by Yung-Luen Lan on 2006/6/9.
 //  Copyright 2006 yllan.org. All rights reserved.

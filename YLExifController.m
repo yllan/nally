@@ -1,6 +1,6 @@
 //
 //  YLExifController.m
-//  MacBlueTelnet
+//  Nally
 //
 //  Created by Jjgod Jiang on 1/5/09.
 //  Copyright 2009 Jjgod Jiang. All rights reserved.
