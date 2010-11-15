@@ -6,7 +6,7 @@ all:
 clean:
 	xcodebuild clean;	\
 	rm -fr build;		\
-	rm -f MacBlueTelnet.xcodeproj/${USER}.*
+	rm -f Nally.xcodeproj/${USER}.*
 
 install: all
 	rm -r /Applications/Nally.app; mv build/Release/Nally.app /Applications/
