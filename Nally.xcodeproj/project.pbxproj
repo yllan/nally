@@ -422,7 +422,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "for LANG in zh_TW zh_CN; do\n  for NIB in MainMenu Preferences; do\n    LPROJ_DIR=${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/${LANG}.lproj\n    ibtool --strings-file Resources/${LANG}.lproj/${NIB}.${LANG}.strings --write ${LPROJ_DIR}/${NIB}.full.xib Resources/English.lproj/${NIB}.xib\n    ibtool --compile ${LPROJ_DIR}/${NIB}.nib ${LPROJ_DIR}/${NIB}.full.xib\n#    rm -rf ${LPROJ_DIR}/${NIB}.full.xib\n  done\ndone\n\nfind ${BUILT_PRODUCTS_DIR}/Nally.app/Contents/Resources -type d -name \".svn\" | xargs rm -rf\n";
+			shellScript = "for LANG in zh_TW zh_CN; do\n  for NIB in MainMenu Preferences; do\n    LPROJ_DIR=${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/${LANG}.lproj\n    ibtool --strings-file Resources/${LANG}.lproj/${NIB}.${LANG}.strings --write ${LPROJ_DIR}/${NIB}.full.xib Resources/English.lproj/${NIB}.xib\n    ibtool --compile ${LPROJ_DIR}/${NIB}.nib ${LPROJ_DIR}/${NIB}.full.xib\n    rm -rf ${LPROJ_DIR}/${NIB}.full.xib\n  done\ndone\n\n# Remove .svn\nfind ${BUILT_PRODUCTS_DIR}/Nally.app/Contents/Resources -type d -name \".svn\" | xargs rm -rf\n\n# Remove .DS_Store\nfind ${BUILT_PRODUCTS_DIR}/Nally.app -name \".DS_Store\" -delete\n\n# Remove Headers\nfind ${BUILT_PRODUCTS_DIR}/Nally.app/Contents/Frameworks -name \"Headers\" | xargs rm -rf\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

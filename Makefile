@@ -15,4 +15,4 @@ test: all
 	build/Release/Nally.app/Contents/MacOS/Nally
 
 release: all
-	python package.py build/Release/Nally.app http://nally.googlecode.com/files
+	python Scripts/package.py build/Release/Nally.app http://nally.googlecode.com/files
