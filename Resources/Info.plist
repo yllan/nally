@@ -61,9 +61,5 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>YLApplication</string>
-	<key>SUFeedURL</key>
-	<string>http://nally.googlecode.com/svn/trunk/Nally.xml</string>
-	<key>SUPublicDSAKeyFile</key>
-	<string>nally.public.pem</string>
 </dict>
 </plist>

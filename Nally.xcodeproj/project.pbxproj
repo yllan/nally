@@ -51,7 +51,6 @@
 		85AF025F1291300F00728C12 /* HMBlkAppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B370790D6840B20035E87D /* HMBlkAppKit.framework */; };
 		85AF02601291300F00728C12 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 859CB7DA0CEF43C300B27180 /* Sparkle.framework */; };
 		85AF02621291301800728C12 /* HMBlkAppKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 07B370790D6840B20035E87D /* HMBlkAppKit.framework */; };
-		85AF02631291301800728C12 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 859CB7DA0CEF43C300B27180 /* Sparkle.framework */; };
 		85B0176212913B30004F06E4 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85B0176012913B30004F06E4 /* Preferences.xib */; };
 		85B0176E12913CA5004F06E4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85B0176C12913CA5004F06E4 /* MainMenu.xib */; };
 		85B0177212913CF3004F06E4 /* PSMTabBarControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85B0177112913CF3004F06E4 /* PSMTabBarControl.framework */; };
@@ -75,7 +74,6 @@
 			files = (
 				85B017D81291441F004F06E4 /* PSMTabBarControl.framework in CopyFiles */,
 				85AF02621291301800728C12 /* HMBlkAppKit.framework in CopyFiles */,
-				85AF02631291301800728C12 /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
