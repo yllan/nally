@@ -9,7 +9,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
-	<string>DragonBall</string>
+	<string>DragonBall.icns</string>
 	<key>CFBundleIdentifier</key>
 	<string>org.yllan.Nally</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -61,5 +61,7 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>YLApplication</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.social-networking</string>
 </dict>
 </plist>
