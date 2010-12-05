@@ -1,5 +1,10 @@
 *.pbxuser
 *.perspectivev3
+*.mode1v3
 *.swp
-build/
+build/*
 .DS_Store
+*xcodeproj/project.xcworkspace
+*xcodeproj/xcuserdata
+*~
+.svn
