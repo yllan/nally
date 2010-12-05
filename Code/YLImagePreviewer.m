@@ -202,7 +202,7 @@
 
 NSStringEncoding encodingFromYLEncoding(YLEncoding ylenc)
 {
-    CFStringEncoding cfenc;
+    CFStringEncoding cfenc = kCFStringEncodingBig5_HKSCS_1999;;
     
     switch (ylenc)
     {
@@ -211,7 +211,7 @@ NSStringEncoding encodingFromYLEncoding(YLEncoding ylenc)
             break;
             
         case YLBig5Encoding:
-            cfenc = kCFStringEncodingBig5_E;
+            cfenc = kCFStringEncodingBig5_HKSCS_1999;
             break;
     }
     
@@ -275,8 +275,9 @@ NSStringEncoding encodingFromYLEncoding(YLEncoding ylenc)
     NSDictionary *tiffData = [metaData objectForKey: (NSString *) kCGImagePropertyTIFFDictionary];
 
     CFRelease(exifSource);
+	[metaData release];
 
-    NSImage *image = [[NSImage alloc] initWithData: _receivedData];
+    NSImage *image = [[[NSImage alloc] initWithData: _receivedData] autorelease];
     if (image == nil || [[image representations] count] == 0)
     {
         NSString *text = [NSString stringWithFormat: @"Failed to download file %@", _currentFileDownloading];

@@ -18,7 +18,18 @@
 		85137B330D02192800833909 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 85137B320D02192800833909 /* Credits.rtf */; };
 		85145AA10AB40053009FC710 /* YLTelnet.mm in Sources */ = {isa = PBXBuildFile; fileRef = 85145AA00AB40053009FC710 /* YLTelnet.mm */; };
 		85145AAE0AB40192009FC710 /* YLTerminal.mm in Sources */ = {isa = PBXBuildFile; fileRef = 85145AAD0AB40192009FC710 /* YLTerminal.mm */; };
-		856CDB260C9650550025C754 /* encoding.c in Sources */ = {isa = PBXBuildFile; fileRef = 856CDB250C9650550025C754 /* encoding.c */; };
+		8540FBC512AB3D00000FE1D6 /* YLTextSuite.m in Sources */ = {isa = PBXBuildFile; fileRef = 8540FBC412AB3D00000FE1D6 /* YLTextSuite.m */; };
+		8540FBF412AB5938000FE1D6 /* YLRun.m in Sources */ = {isa = PBXBuildFile; fileRef = 8540FBF312AB5938000FE1D6 /* YLRun.m */; };
+		8540FBF712AB5AF4000FE1D6 /* YLLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 8540FBF612AB5AF4000FE1D6 /* YLLine.m */; };
+		8540FCCC12AB81B9000FE1D6 /* YLApplicationKitAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8540FCCB12AB81B9000FE1D6 /* YLApplicationKitAddition.m */; };
+		8540FE5412AB8BFA000FE1D6 /* TextSuiteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8540FD0512AB886A000FE1D6 /* TextSuiteTests.m */; };
+		8540FE7412AB8D9C000FE1D6 /* encoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 856CDB250C9650550025C754 /* encoding.m */; };
+		8540FE8012AB8E05000FE1D6 /* CommonType.m in Sources */ = {isa = PBXBuildFile; fileRef = 85ED52280D0920E6003296D4 /* CommonType.m */; };
+		8540FE8112AB8E09000FE1D6 /* YLApplicationKitAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 8540FCCB12AB81B9000FE1D6 /* YLApplicationKitAddition.m */; };
+		8540FE8212AB8E12000FE1D6 /* YLLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 8540FBF612AB5AF4000FE1D6 /* YLLine.m */; };
+		8540FE8312AB8E14000FE1D6 /* YLRun.m in Sources */ = {isa = PBXBuildFile; fileRef = 8540FBF312AB5938000FE1D6 /* YLRun.m */; };
+		8540FE8412AB8E15000FE1D6 /* YLTextSuite.m in Sources */ = {isa = PBXBuildFile; fileRef = 8540FBC412AB3D00000FE1D6 /* YLTextSuite.m */; };
+		856CDB260C9650550025C754 /* encoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 856CDB250C9650550025C754 /* encoding.m */; };
 		8570AD5F0A3923A900838442 /* YLView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8570AD5E0A3923A900838442 /* YLView.mm */; };
 		8579CA2A0CF21D3D005A8353 /* YLSite.m in Sources */ = {isa = PBXBuildFile; fileRef = 8579CA290CF21D3D005A8353 /* YLSite.m */; };
 		857EAE2A0CF1D62900777C15 /* connect.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 857EAE290CF1D62900777C15 /* connect.pdf */; };
@@ -48,7 +59,7 @@
 		85CE53390D0D687800F55B7B /* YLSSH.mm in Sources */ = {isa = PBXBuildFile; fileRef = 85CE53380D0D687800F55B7B /* YLSSH.mm */; };
 		85D2593A0D20FD48002BD294 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 85D259390D20FD48002BD294 /* libcrypto.dylib */; };
 		85E7825C0D057E8400BDA3FB /* YLEmoticon.m in Sources */ = {isa = PBXBuildFile; fileRef = 85E7825B0D057E8400BDA3FB /* YLEmoticon.m */; };
-		85ED52290D0920E6003296D4 /* CommonType.c in Sources */ = {isa = PBXBuildFile; fileRef = 85ED52280D0920E6003296D4 /* CommonType.c */; };
+		85ED52290D0920E6003296D4 /* CommonType.m in Sources */ = {isa = PBXBuildFile; fileRef = 85ED52280D0920E6003296D4 /* CommonType.m */; };
 		85ED53220D092B5F003296D4 /* YLConnection.mm in Sources */ = {isa = PBXBuildFile; fileRef = 85ED53210D092B5F003296D4 /* YLConnection.mm */; };
 		85F7F2090B06EE36000C4CDF /* YLLGlobalConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 85F7F2080B06EE36000C4CDF /* YLLGlobalConfig.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
@@ -99,8 +110,20 @@
 		85145AAC0AB40192009FC710 /* YLTerminal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLTerminal.h; sourceTree = "<group>"; };
 		85145AAD0AB40192009FC710 /* YLTerminal.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = YLTerminal.mm; sourceTree = "<group>"; };
 		852E798A0C96E7A90027751F /* CommonType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonType.h; sourceTree = "<group>"; };
+		8540FBC312AB3D00000FE1D6 /* YLTextSuite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLTextSuite.h; sourceTree = "<group>"; };
+		8540FBC412AB3D00000FE1D6 /* YLTextSuite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLTextSuite.m; sourceTree = "<group>"; };
+		8540FBF212AB5938000FE1D6 /* YLRun.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLRun.h; sourceTree = "<group>"; };
+		8540FBF312AB5938000FE1D6 /* YLRun.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLRun.m; sourceTree = "<group>"; };
+		8540FBF512AB5AF4000FE1D6 /* YLLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLLine.h; sourceTree = "<group>"; };
+		8540FBF612AB5AF4000FE1D6 /* YLLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLLine.m; sourceTree = "<group>"; };
+		8540FCCA12AB81B9000FE1D6 /* YLApplicationKitAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLApplicationKitAddition.h; sourceTree = "<group>"; };
+		8540FCCB12AB81B9000FE1D6 /* YLApplicationKitAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLApplicationKitAddition.m; sourceTree = "<group>"; };
+		8540FD0412AB886A000FE1D6 /* TextSuiteTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextSuiteTests.h; sourceTree = "<group>"; };
+		8540FD0512AB886A000FE1D6 /* TextSuiteTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextSuiteTests.m; sourceTree = "<group>"; };
+		8540FE4712AB8BA3000FE1D6 /* TextSuiteTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TextSuiteTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8540FE4812AB8BA3000FE1D6 /* TextSuiteTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TextSuiteTests-Info.plist"; sourceTree = "<group>"; };
 		856CDB240C9650550025C754 /* encoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = encoding.h; sourceTree = "<group>"; };
-		856CDB250C9650550025C754 /* encoding.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = encoding.c; sourceTree = "<group>"; };
+		856CDB250C9650550025C754 /* encoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = encoding.m; sourceTree = "<group>"; };
 		8570AD5D0A3923A900838442 /* YLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLView.h; sourceTree = "<group>"; };
 		8570AD5E0A3923A900838442 /* YLView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = YLView.mm; sourceTree = "<group>"; };
 		8579CA280CF21D3D005A8353 /* YLSite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLSite.h; sourceTree = "<group>"; };
@@ -138,7 +161,7 @@
 		85E7825B0D057E8400BDA3FB /* YLEmoticon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLEmoticon.m; sourceTree = "<group>"; };
 		85EA93240D0791240098C94B /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh_TW; path = zh_TW.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		85EA93250D0791240098C94B /* zh_TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = zh_TW; path = zh_TW.lproj/Localizable.strings; sourceTree = "<group>"; };
-		85ED52280D0920E6003296D4 /* CommonType.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = CommonType.c; sourceTree = "<group>"; };
+		85ED52280D0920E6003296D4 /* CommonType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonType.m; sourceTree = "<group>"; };
 		85ED53200D092B5F003296D4 /* YLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLConnection.h; sourceTree = "<group>"; };
 		85ED53210D092B5F003296D4 /* YLConnection.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = YLConnection.mm; sourceTree = "<group>"; };
 		85F7F2070B06EE36000C4CDF /* YLLGlobalConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLLGlobalConfig.h; sourceTree = "<group>"; };
@@ -147,6 +170,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8540FE4412AB8BA3000FE1D6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D11072E0486CEB800E47090 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -215,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				7119D1820EE7DC46003F98C8 /* Nally.app */,
+				8540FE4712AB8BA3000FE1D6 /* TextSuiteTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -222,12 +253,14 @@
 		29B97314FDCFA39411CA2CEA /* MacBlueTelnet */ = {
 			isa = PBXGroup;
 			children = (
+				8540FD0312AB8843000FE1D6 /* Tests */,
 				85AF0121129129E400728C12 /* Dependencies */,
 				080E96DDFE201D6D7F000001 /* Code */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				8540FE4812AB8BA3000FE1D6 /* TextSuiteTests-Info.plist */,
 			);
 			name = MacBlueTelnet;
 			sourceTree = "<group>";
@@ -274,6 +307,28 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8540FBF812AB5AFB000FE1D6 /* Text Suite */ = {
+			isa = PBXGroup;
+			children = (
+				8540FBC312AB3D00000FE1D6 /* YLTextSuite.h */,
+				8540FBC412AB3D00000FE1D6 /* YLTextSuite.m */,
+				8540FBF512AB5AF4000FE1D6 /* YLLine.h */,
+				8540FBF612AB5AF4000FE1D6 /* YLLine.m */,
+				8540FBF212AB5938000FE1D6 /* YLRun.h */,
+				8540FBF312AB5938000FE1D6 /* YLRun.m */,
+			);
+			name = "Text Suite";
+			sourceTree = "<group>";
+		};
+		8540FD0312AB8843000FE1D6 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				8540FD0412AB886A000FE1D6 /* TextSuiteTests.h */,
+				8540FD0512AB886A000FE1D6 /* TextSuiteTests.m */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 		85AF0121129129E400728C12 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
@@ -311,9 +366,11 @@
 			isa = PBXGroup;
 			children = (
 				856CDB240C9650550025C754 /* encoding.h */,
-				856CDB250C9650550025C754 /* encoding.c */,
+				856CDB250C9650550025C754 /* encoding.m */,
 				852E798A0C96E7A90027751F /* CommonType.h */,
-				85ED52280D0920E6003296D4 /* CommonType.c */,
+				85ED52280D0920E6003296D4 /* CommonType.m */,
+				8540FCCA12AB81B9000FE1D6 /* YLApplicationKitAddition.h */,
+				8540FCCB12AB81B9000FE1D6 /* YLApplicationKitAddition.m */,
 			);
 			name = "Constant & Utilities";
 			sourceTree = "<group>";
@@ -331,6 +388,7 @@
 				8579CA290CF21D3D005A8353 /* YLSite.m */,
 				85E7825A0D057E8400BDA3FB /* YLEmoticon.h */,
 				85E7825B0D057E8400BDA3FB /* YLEmoticon.m */,
+				8540FBF812AB5AFB000FE1D6 /* Text Suite */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -338,6 +396,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		8540FE4612AB8BA3000FE1D6 /* TextSuiteTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8540FE4B12AB8BA3000FE1D6 /* Build configuration list for PBXNativeTarget "TextSuiteTests" */;
+			buildPhases = (
+				8540FE4212AB8BA3000FE1D6 /* Resources */,
+				8540FE4312AB8BA3000FE1D6 /* Sources */,
+				8540FE4412AB8BA3000FE1D6 /* Frameworks */,
+				8540FE4512AB8BA3000FE1D6 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TextSuiteTests;
+			productName = TextSuiteTests;
+			productReference = 8540FE4712AB8BA3000FE1D6 /* TextSuiteTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 		8D1107260486CEB800E47090 /* Nally */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Nally" */;
@@ -380,11 +456,19 @@
 			projectRoot = "";
 			targets = (
 				8D1107260486CEB800E47090 /* Nally */,
+				8540FE4612AB8BA3000FE1D6 /* TextSuiteTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8540FE4212AB8BA3000FE1D6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D1107290486CEB800E47090 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -424,9 +508,36 @@
 			shellPath = /bin/sh;
 			shellScript = "for LANG in zh_TW zh_CN; do\n  for NIB in MainMenu Preferences; do\n    LPROJ_DIR=${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/${LANG}.lproj\n    ibtool --strings-file Resources/${LANG}.lproj/${NIB}.${LANG}.strings --write ${LPROJ_DIR}/${NIB}.full.xib Resources/English.lproj/${NIB}.xib\n    ibtool --compile ${LPROJ_DIR}/${NIB}.nib ${LPROJ_DIR}/${NIB}.full.xib\n    rm -rf ${LPROJ_DIR}/${NIB}.full.xib\n  done\ndone\n\n# Remove .svn\nfind ${BUILT_PRODUCTS_DIR}/Nally.app/Contents/Resources -type d -name \".svn\" | xargs rm -rf\n\n# Remove .DS_Store\nfind ${BUILT_PRODUCTS_DIR}/Nally.app -name \".DS_Store\" -delete\n\n# Remove Headers\nfind ${BUILT_PRODUCTS_DIR}/Nally.app/Contents/Frameworks -name \"Headers\" | xargs rm -rf\n";
 		};
+		8540FE4512AB8BA3000FE1D6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8540FE4312AB8BA3000FE1D6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8540FE5412AB8BFA000FE1D6 /* TextSuiteTests.m in Sources */,
+				8540FE7412AB8D9C000FE1D6 /* encoding.m in Sources */,
+				8540FE8012AB8E05000FE1D6 /* CommonType.m in Sources */,
+				8540FE8112AB8E09000FE1D6 /* YLApplicationKitAddition.m in Sources */,
+				8540FE8212AB8E12000FE1D6 /* YLLine.m in Sources */,
+				8540FE8312AB8E14000FE1D6 /* YLRun.m in Sources */,
+				8540FE8412AB8E15000FE1D6 /* YLTextSuite.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D11072C0486CEB800E47090 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -435,14 +546,14 @@
 				85145AA10AB40053009FC710 /* YLTelnet.mm in Sources */,
 				85145AAE0AB40192009FC710 /* YLTerminal.mm in Sources */,
 				85F7F2090B06EE36000C4CDF /* YLLGlobalConfig.m in Sources */,
-				856CDB260C9650550025C754 /* encoding.c in Sources */,
+				856CDB260C9650550025C754 /* encoding.m in Sources */,
 				85ABEB810C966FEF008227D6 /* YLController.mm in Sources */,
 				858A54E60CAE78C8000E1AA7 /* YLMarkedTextView.m in Sources */,
 				85899C7B0CEED4E40031907F /* YLApplication.mm in Sources */,
 				8579CA2A0CF21D3D005A8353 /* YLSite.m in Sources */,
 				859252F50CFD4F860054E3D6 /* YLContextualMenuManager.m in Sources */,
 				85E7825C0D057E8400BDA3FB /* YLEmoticon.m in Sources */,
-				85ED52290D0920E6003296D4 /* CommonType.c in Sources */,
+				85ED52290D0920E6003296D4 /* CommonType.m in Sources */,
 				85ED53220D092B5F003296D4 /* YLConnection.mm in Sources */,
 				85CE53390D0D687800F55B7B /* YLSSH.mm in Sources */,
 				07B370690D6840600035E87D /* YLImagePreviewer.m in Sources */,
@@ -452,6 +563,10 @@
 				071AE8710F12012100FDD307 /* YLExifController.m in Sources */,
 				85AF012412912A3300728C12 /* DBPrefsWindowController.m in Sources */,
 				85AF012712912A8C00728C12 /* main.m in Sources */,
+				8540FBC512AB3D00000FE1D6 /* YLTextSuite.m in Sources */,
+				8540FBF412AB5938000FE1D6 /* YLRun.m in Sources */,
+				8540FBF712AB5AF4000FE1D6 /* YLLine.m in Sources */,
+				8540FCCC12AB81B9000FE1D6 /* YLApplicationKitAddition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -499,6 +614,62 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		8540FE4912AB8BA3000FE1D6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "TextSuiteTests-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = TextSuiteTests;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		8540FE4A12AB8BA3000FE1D6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "TextSuiteTests-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = TextSuiteTests;
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -576,6 +747,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8540FE4B12AB8BA3000FE1D6 /* Build configuration list for PBXNativeTarget "TextSuiteTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8540FE4912AB8BA3000FE1D6 /* Debug */,
+				8540FE4A12AB8BA3000FE1D6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Nally" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
