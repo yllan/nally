@@ -12,6 +12,8 @@
 	<string>DragonBall.icns</string>
 	<key>CFBundleIdentifier</key>
 	<string>org.yllan.Nally</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>© 2010, yllan.org</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
