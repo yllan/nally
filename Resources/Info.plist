@@ -3,15 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleGetInfoString</key>
-	<string>1.4.5</string>
+	<string>1.4.7</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFile</key>
-	<string>DragonBall</string>
+	<string>DragonBall.icns</string>
 	<key>CFBundleIdentifier</key>
 	<string>org.yllan.Nally</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>© 2010, yllan.org</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -41,9 +43,9 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.4.6</string>
+	<string>1.4.7</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.4.6</string>
+	<string>1.4.7</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>10.5.0</string>
 	<key>LSMinimumSystemVersionByArchitecture</key>
@@ -65,5 +67,7 @@
 	<string>http://nally.googlecode.com/svn/trunk/Nally.xml</string>
 	<key>SUPublicDSAKeyFile</key>
 	<string>nally.public.pem</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.social-networking</string>
 </dict>
 </plist>
