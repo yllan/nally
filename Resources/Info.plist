@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleGetInfoString</key>
-	<string>1.4.6</string>
+	<string>1.4.7</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
@@ -43,9 +43,9 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.4.6</string>
+	<string>1.4.7</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.4.6</string>
+	<string>1.4.7</string>
 	<key>LSMinimumSystemVersion</key>
 	<string>10.5.0</string>
 	<key>LSMinimumSystemVersionByArchitecture</key>

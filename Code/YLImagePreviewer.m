@@ -277,7 +277,7 @@ NSStringEncoding encodingFromYLEncoding(YLEncoding ylenc)
     CFRelease(exifSource);
 	[metaData release];
 
-    NSImage *image = [[[NSImage alloc] initWithData: _receivedData] autorelease];
+    NSImage *image = [[NSImage alloc] initWithData: _receivedData];
     if (image == nil || [[image representations] count] == 0)
     {
         NSString *text = [NSString stringWithFormat: @"Failed to download file %@", _currentFileDownloading];
