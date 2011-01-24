@@ -12,6 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<integer value="57"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -608,15 +609,6 @@
 									<reference key="NSOnImage" ref="667099950"/>
 									<reference key="NSMixedImage" ref="481382333"/>
 								</object>
-								<object class="NSMenuItem" id="966601635">
-									<reference key="NSMenu" ref="157670742"/>
-									<string key="NSTitle">Check for Updates...</string>
-									<string key="NSKeyEquiv"/>
-									<int key="NSKeyEquivModMask">1048576</int>
-									<int key="NSMnemonicLoc">2147483647</int>
-									<reference key="NSOnImage" ref="667099950"/>
-									<reference key="NSMixedImage" ref="481382333"/>
-								</object>
 								<object class="NSMenuItem" id="208517797">
 									<reference key="NSMenu" ref="157670742"/>
 									<bool key="NSIsDisabled">YES</bool>
@@ -1162,9 +1154,6 @@
 			<object class="NSCustomObject" id="954315210">
 				<string key="NSClassName">YLController</string>
 			</object>
-			<object class="NSCustomObject" id="923489522">
-				<string key="NSClassName">SUUpdater</string>
-			</object>
 			<object class="NSWindowTemplate" id="978958865">
 				<int key="NSWindowStyleMask">27</int>
 				<int key="NSWindowBacking">2</int>
@@ -1374,6 +1363,7 @@
 											</object>
 											<string key="NSFrame">{{1, 1}, {108, 342}}</string>
 											<reference key="NSSuperview" ref="602075345"/>
+											<reference key="NSNextKeyView" ref="13469874"/>
 											<reference key="NSDocView" ref="13469874"/>
 											<reference key="NSBGColor" ref="497942154"/>
 											<int key="NScvFlags">4</int>
@@ -1401,6 +1391,7 @@
 									</object>
 									<string key="NSFrameSize">{110, 344}</string>
 									<reference key="NSSuperview" ref="893775230"/>
+									<reference key="NSNextKeyView" ref="133140844"/>
 									<int key="NSsFlags">530</int>
 									<reference key="NSVScroller" ref="237845809"/>
 									<reference key="NSHScroller" ref="800575191"/>
@@ -2721,14 +2712,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">checkForUpdates:</string>
-						<reference key="source" ref="923489522"/>
-						<reference key="destination" ref="966601635"/>
-					</object>
-					<int key="connectionID">327</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
 						<string key="label">closeTab:</string>
 						<reference key="source" ref="954315210"/>
 						<reference key="destination" ref="454002067"/>
@@ -3651,7 +3634,6 @@
 							<reference ref="793156719"/>
 							<reference ref="1062597669"/>
 							<reference ref="919085431"/>
-							<reference ref="966601635"/>
 						</object>
 						<reference key="parent" ref="697753202"/>
 					</object>
@@ -3949,16 +3931,6 @@
 						<int key="objectID">319</int>
 						<reference key="object" ref="454002067"/>
 						<reference key="parent" ref="318096741"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">325</int>
-						<reference key="object" ref="923489522"/>
-						<reference key="parent" ref="0"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">326</int>
-						<reference key="object" ref="966601635"/>
-						<reference key="parent" ref="157670742"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">330</int>
@@ -5093,7 +5065,6 @@
 					<string>312.IBPluginDependency</string>
 					<string>313.IBPluginDependency</string>
 					<string>319.IBPluginDependency</string>
-					<string>326.IBPluginDependency</string>
 					<string>330.IBPluginDependency</string>
 					<string>332.IBEditorWindowLastContentRect</string>
 					<string>332.IBPluginDependency</string>
@@ -5153,6 +5124,7 @@
 					<string>500.IBPluginDependency</string>
 					<string>56.IBPluginDependency</string>
 					<string>56.ImportedFromIB2</string>
+					<string>57.IBEditorWindowLastContentRect</string>
 					<string>57.IBPluginDependency</string>
 					<string>57.ImportedFromIB2</string>
 					<string>57.editorWindowContentRectSynchronizationRect</string>
@@ -5365,7 +5337,6 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{{357, 394}, {431, 393}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{{357, 394}, {431, 393}}</string>
@@ -5424,6 +5395,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
+					<string>{{167, 566}, {183, 183}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
 					<string>{{583, 783}, {232, 203}}</string>
@@ -5575,14 +5547,6 @@
 							<string key="candidateClassName">id</string>
 						</object>
 					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBUserSource</string>
-						<string key="minorKey"/>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">SUUpdater</string>
-					<string key="superclassName">NSObject</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBUserSource</string>
 						<string key="minorKey"/>
@@ -6506,7 +6470,7 @@
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier" id="934966879">
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">Sparkle.framework/Headers/SUUpdater.h</string>
 					</object>
@@ -6756,33 +6720,6 @@
 						</object>
 					</object>
 					<reference key="sourceIdentifier" ref="493757225"/>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">SUUpdater</string>
-					<string key="superclassName">NSObject</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">checkForUpdates:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">checkForUpdates:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">checkForUpdates:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</object>
-					<object class="NSMutableDictionary" key="outlets">
-						<string key="NS.key.0">delegate</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<string key="NS.key.0">delegate</string>
-						<object class="IBToOneOutletInfo" key="NS.object.0">
-							<string key="name">delegate</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</object>
-					<reference key="sourceIdentifier" ref="934966879"/>
 				</object>
 			</object>
 		</object>

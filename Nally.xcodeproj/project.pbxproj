@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 44;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -49,9 +49,7 @@
 		85AF012712912A8C00728C12 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 85AF012512912A8C00728C12 /* main.m */; };
 		85AF012B12912AD000728C12 /* nally.public.pem in Resources */ = {isa = PBXBuildFile; fileRef = 85AF012A12912AD000728C12 /* nally.public.pem */; };
 		85AF025F1291300F00728C12 /* HMBlkAppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07B370790D6840B20035E87D /* HMBlkAppKit.framework */; };
-		85AF02601291300F00728C12 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 859CB7DA0CEF43C300B27180 /* Sparkle.framework */; };
 		85AF02621291301800728C12 /* HMBlkAppKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 07B370790D6840B20035E87D /* HMBlkAppKit.framework */; };
-		85AF02631291301800728C12 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 859CB7DA0CEF43C300B27180 /* Sparkle.framework */; };
 		85B0176212913B30004F06E4 /* Preferences.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85B0176012913B30004F06E4 /* Preferences.xib */; };
 		85B0176E12913CA5004F06E4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 85B0176C12913CA5004F06E4 /* MainMenu.xib */; };
 		85B0177212913CF3004F06E4 /* PSMTabBarControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 85B0177112913CF3004F06E4 /* PSMTabBarControl.framework */; };
@@ -75,7 +73,6 @@
 			files = (
 				85B017D81291441F004F06E4 /* PSMTabBarControl.framework in CopyFiles */,
 				85AF02621291301800728C12 /* HMBlkAppKit.framework in CopyFiles */,
-				85AF02631291301800728C12 /* Sparkle.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,7 +179,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				85AF025F1291300F00728C12 /* HMBlkAppKit.framework in Frameworks */,
-				85AF02601291300F00728C12 /* Sparkle.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				850711AB0CA7A347005F4734 /* ApplicationServices.framework in Frameworks */,
 				85D2593A0D20FD48002BD294 /* libcrypto.dylib in Frameworks */,
@@ -440,7 +436,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Nally" */;
-			compatibilityVersion = "Xcode 3.0";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -506,7 +502,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "for LANG in zh_TW zh_CN; do\n  for NIB in MainMenu Preferences; do\n    LPROJ_DIR=${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/${LANG}.lproj\n    ibtool --strings-file Resources/${LANG}.lproj/${NIB}.${LANG}.strings --write ${LPROJ_DIR}/${NIB}.full.xib Resources/English.lproj/${NIB}.xib\n    ibtool --compile ${LPROJ_DIR}/${NIB}.nib ${LPROJ_DIR}/${NIB}.full.xib\n    rm -rf ${LPROJ_DIR}/${NIB}.full.xib\n  done\ndone\n\n# Remove .svn\nfind ${BUILT_PRODUCTS_DIR}/Nally.app/Contents/Resources -type d -name \".svn\" | xargs rm -rf\n\n# Remove .DS_Store\nfind ${BUILT_PRODUCTS_DIR}/Nally.app -name \".DS_Store\" -delete\n\n# Remove Headers\nfind ${BUILT_PRODUCTS_DIR}/Nally.app/Contents/Frameworks -name \"Headers\" | xargs rm -rf\n";
+			shellScript = "# Extract English strings (use this to check if you added new strings to your nibs)\n\n\n\nfor LANG in zh_TW zh_CN; do\n  for NIB in MainMenu Preferences; do\n    LPROJ_DIR=${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/${LANG}.lproj\n    ibtool --generate-strings-file Resources/English.lproj/${NIB}.English.strings Resources/English.lproj/${NIB}.xib\n    ibtool --strings-file Resources/${LANG}.lproj/${NIB}.${LANG}.strings --write ${LPROJ_DIR}/${NIB}.full.xib Resources/English.lproj/${NIB}.xib\n    ibtool --compile ${LPROJ_DIR}/${NIB}.nib ${LPROJ_DIR}/${NIB}.full.xib\n    rm -rf ${LPROJ_DIR}/${NIB}.full.xib\n  done\ndone\n\n# Remove .svn\nfind ${BUILT_PRODUCTS_DIR}/Nally.app/Contents/Resources -type d -name \".svn\" | xargs rm -rf\n\n# Remove .DS_Store\nfind ${BUILT_PRODUCTS_DIR}/Nally.app -name \".DS_Store\" -delete\n\n# Remove Headers\nfind ${BUILT_PRODUCTS_DIR}/Nally.app/Contents/Frameworks -name \"Headers\" | xargs rm -rf\n";
 		};
 		8540FE4512AB8BA3000FE1D6 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -645,8 +641,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
-				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
@@ -674,6 +669,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -687,7 +683,7 @@
 				INSTALL_PATH = /Applications;
 				OTHER_CFLAGS = "-D__DUMPPACKET__";
 				PRODUCT_NAME = Nally;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+				SDKROOT = macosx10.5;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -695,8 +691,9 @@
 		C01FCF4C08A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
-				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application: Yung-Luen Lan";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -708,7 +705,7 @@
 				INFOPLIST_FILE = Resources/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = Nally;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+				SDKROOT = macosx10.5;
 				VALID_ARCHS = "i386 x86_64";
 				WRAPPER_EXTENSION = app;
 			};
@@ -725,15 +722,14 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				PREBINDING = NO;
 				PRODUCT_NAME = Nally;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+				SDKROOT = macosx10.5;
 			};
 			name = Debug;
 		};
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1)";
-				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "x86_64 i386 ppc";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_PREFIX_HEADER = "";
@@ -741,7 +737,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				PREBINDING = NO;
 				PRODUCT_NAME = Nally;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+				SDKROOT = macosx10.5;
 			};
 			name = Release;
 		};
