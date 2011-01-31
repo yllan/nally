@@ -34,6 +34,7 @@
 
 - (void) dealloc
 {
+    NSLog(@"dealloc");
     if (_pid > 0)
         kill(_pid, SIGKILL);
     

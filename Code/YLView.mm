@@ -1277,11 +1277,11 @@ BOOL isSpecialSymbol(unichar ch)
     return YES;
 }
 
-- (void) removeTabViewItem: (NSTabViewItem *)tabViewItem
-{
-    [[tabViewItem identifier] close];
-    [super removeTabViewItem: tabViewItem];
-}
+//- (void) removeTabViewItem: (NSTabViewItem *)tabViewItem
+//{
+//    [[tabViewItem identifier] close];
+//    [super removeTabViewItem: tabViewItem];
+//}
 
 + (NSMenu *) defaultMenu {
     return [[[NSMenu alloc] init] autorelease];

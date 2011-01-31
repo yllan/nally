@@ -405,6 +405,7 @@
     if ([self tabView: _telnetView shouldCloseTabViewItem: tabItem]) {
         [self tabView: _telnetView willCloseTabViewItem: tabItem];
         [[[tabItem identifier] terminal] setHasMessage: NO];
+        [[tabItem identifier] close];
         [_telnetView removeTabViewItem: tabItem];
         [self tabView: _telnetView didCloseTabViewItem: tabItem];
     }
@@ -758,6 +759,7 @@
 
 - (void) tabView: (NSTabView *)tabView didCloseTabViewItem: (NSTabViewItem *)tabViewItem
 {
+    [[tabViewItem identifier] close];
 }
 
 - (void) tabView: (NSTabView *)tabView didSelectTabViewItem: (NSTabViewItem *)tabViewItem
@@ -787,7 +789,7 @@
 
 - (BOOL) tabView: (NSTabView*)aTabView shouldDragTabViewItem: (NSTabViewItem *)tabViewItem fromTabBar: (PSMTabBarControl *)tabBarControl
 {
-	return NO;
+	return YES;
 }
 
 - (BOOL) tabView: (NSTabView*)aTabView shouldDropTabViewItem: (NSTabViewItem *)tabViewItem inTabBar: (PSMTabBarControl *)tabBarControl
@@ -797,7 +799,7 @@
 
 - (void) tabView: (NSTabView*)aTabView didDropTabViewItem: (NSTabViewItem *)tabViewItem inTabBar: (PSMTabBarControl *)tabBarControl
 {
-//    [self refreshTabLabelNumber: _telnetView];
+    [self refreshTabLabelNumber: _telnetView];
 }
 
 - (NSImage *) tabView: (NSTabView *)aTabView imageForTabViewItem: (NSTabViewItem *)tabViewItem offset: (NSSize *)offset styleMask: (NSUInteger *)styleMask
