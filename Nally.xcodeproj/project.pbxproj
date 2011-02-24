@@ -633,6 +633,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = TextSuiteTests;
+				SDKROOT = macosx10.6;
 				WRAPPER_EXTENSION = octest;
 			};
 			name = Debug;
@@ -660,6 +661,7 @@
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = TextSuiteTests;
+				SDKROOT = macosx10.6;
 				WRAPPER_EXTENSION = octest;
 				ZERO_LINK = NO;
 			};
@@ -683,7 +685,7 @@
 				INSTALL_PATH = /Applications;
 				OTHER_CFLAGS = "-D__DUMPPACKET__";
 				PRODUCT_NAME = Nally;
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx10.6;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -705,7 +707,7 @@
 				INFOPLIST_FILE = Resources/Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = Nally;
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx10.6;
 				VALID_ARCHS = "i386 x86_64";
 				WRAPPER_EXTENSION = app;
 			};

@@ -272,7 +272,7 @@ NSStringEncoding encodingFromYLEncoding(YLEncoding ylenc)
     
     CGImageSourceRef exifSource = CGImageSourceCreateWithData((CFDataRef) _receivedData, NULL);
     NSDictionary *metaData = (NSDictionary*) CGImageSourceCopyPropertiesAtIndex(exifSource, 0, nil);
-    NSDictionary *tiffData = [metaData objectForKey: (NSString *) kCGImagePropertyTIFFDictionary];
+    NSDictionary *tiffData = [[[metaData objectForKey: (NSString *) kCGImagePropertyTIFFDictionary] retain] autorelease];
 
     CFRelease(exifSource);
 	[metaData release];
