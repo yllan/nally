@@ -596,13 +596,28 @@ BOOL isSpecialSymbol(unichar ch)
         if (url)
         {
             // if it's a image file, try loading it.
-            if ([url pathExtension] && !([e modifierFlags] & NSControlKeyMask) &&
+            if ([url characterAtIndex:([url length] - 1)] != '/' &&
+                [url pathExtension] && !([e modifierFlags] & NSControlKeyMask) &&
                 [[NSImage imageFileTypes] containsObject:[url pathExtension]] &&
-                ! [[url pathExtension] isEqual: @"pdf"])
+                ![[url pathExtension] isEqual: @"pdf"])
             {
                 [[YLImagePreviewer alloc] initWithURL: [NSURL URLWithString: url]];
-            } else
-                [[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString: url]];
+            }
+            else
+            {
+                if ([e modifierFlags] & NSAlternateKeyMask)
+                {
+                    [[NSWorkspace sharedWorkspace] openURLs:[NSArray arrayWithObject:[NSURL URLWithString:url]]
+                                    withAppBundleIdentifier:nil
+                                                    options:NSWorkspaceLaunchWithoutActivation
+                             additionalEventParamDescriptor:nil
+                                          launchIdentifiers:nil];
+                }
+                else
+                {
+                    [[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString: url]];
+                }
+            }
         }
     }
 }
