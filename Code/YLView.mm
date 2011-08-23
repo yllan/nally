@@ -595,9 +595,14 @@ BOOL isSpecialSymbol(unichar ch)
                                                           column: (index % gColumn)];
         if (url)
         {
+            BOOL shouldUseImagePreviewer = [gConfig shouldPreferImagePreviewer];
+            if ([e modifierFlags] & NSControlKeyMask)
+                shouldUseImagePreviewer = !shouldUseImagePreviewer;
+
             // if it's a image file, try loading it.
-            if ([url characterAtIndex:([url length] - 1)] != '/' &&
-                [url pathExtension] && !([e modifierFlags] & NSControlKeyMask) &&
+            if (shouldUseImagePreviewer &&
+                [url characterAtIndex:([url length] - 1)] != '/' &&
+                [url pathExtension] &&
                 [[NSImage imageFileTypes] containsObject:[url pathExtension]] &&
                 ![[url pathExtension] isEqual: @"pdf"])
             {

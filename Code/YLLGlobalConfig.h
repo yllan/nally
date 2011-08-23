@@ -27,6 +27,7 @@
     BOOL _shouldSmoothFonts;
     BOOL _detectDoubleByte;
     BOOL _repeatBounce;
+    BOOL _shouldPreferImagePreviewer;
     YLEncoding _defaultEncoding;
     YLANSIColorKey _defaultANSIColorKey;
     
@@ -74,6 +75,9 @@
 - (void)setDetectDoubleByte:(BOOL)value;
 - (BOOL)repeatBounce;
 - (void)setRepeatBounce:(BOOL)value;
+- (BOOL)shouldPreferImagePreviewer;
+- (void)setShouldPreferImagePreviewer:(BOOL)value;
+
 - (YLEncoding)defaultEncoding;
 - (void)setDefaultEncoding:(YLEncoding)value;
 - (YLANSIColorKey)defaultANSIColorKey;

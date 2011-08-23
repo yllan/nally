@@ -47,6 +47,10 @@ static YLLGlobalConfig *sSharedInstance;
         [self setDefaultEncoding: (YLEncoding) [defaults integerForKey: @"DefaultEncoding"]];
         [self setDefaultANSIColorKey: (YLANSIColorKey) [defaults integerForKey: @"DefaultANSIColorKey"]];
         [self setRepeatBounce: [defaults boolForKey: @"RepeatBounce"]];
+        if ([defaults objectForKey:@"ShouldPreferImagePreviewer"])
+            [self setShouldPreferImagePreviewer:[defaults boolForKey:@"ShouldPreferImagePreviewer"]];
+        else
+            [self setShouldPreferImagePreviewer:YES];
         
 		/* init code */
 		_row = 24;
@@ -249,6 +253,18 @@ static YLLGlobalConfig *sSharedInstance;
 - (void)setDetectDoubleByte:(BOOL)value {
     _detectDoubleByte = value;
     [[NSUserDefaults standardUserDefaults] setBool: value forKey: @"DetectDoubleByte"];
+}
+
+- (BOOL)shouldPreferImagePreviewer
+{
+    return _shouldPreferImagePreviewer;
+}
+
+- (void)setShouldPreferImagePreviewer:(BOOL)value
+{
+    _shouldPreferImagePreviewer = value;
+    [[NSUserDefaults standardUserDefaults] setBool:value
+                                            forKey:@"ShouldPreferImagePreviewer"];
 }
 
 - (YLEncoding)defaultEncoding {
