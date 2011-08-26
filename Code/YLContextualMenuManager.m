@@ -69,18 +69,19 @@ static YLContextualMenuManager *gSharedInstance;
                                           options:NSLiteralSearch
                                             range:NSMakeRange(0, [processedText length])];
         
-        // Split the selected text into lines
-        NSArray *lines = [processedText componentsSeparatedByString:@"\r"];
+        // Split the selected text into blocks seperated by one of the characters in seps
+        NSCharacterSet *seps = [NSCharacterSet characterSetWithCharactersInString:@" \r"];
+        NSArray *blocks = [processedText componentsSeparatedByCharactersInSet:seps];
 
         // Use out only lines that really are URLs
         NSMutableArray *urls = [NSMutableArray array];
-        for (NSString *line in lines)
+        for (NSString *block in blocks)
         {
-            if ([[line componentsSeparatedByString:@"."] count] > 1)
+            if ([[block componentsSeparatedByString:@"."] count] > 1)
             {
-                if (![line hasPrefix:@"http://"])
-                    line = [@"http://" stringByAppendingString:line];
-                [urls addObject:line];
+                if (![block hasPrefix:@"http://"])
+                    block = [@"http://" stringByAppendingString:block];
+                [urls addObject:block];
             }
         }
 
