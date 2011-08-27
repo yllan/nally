@@ -146,7 +146,7 @@ static YLContextualMenuManager *gSharedInstance;
     {
         if (![u hasPrefix:@"http://"])
             u = [@"http://" stringByAppendingString:u];
-        [urls addObject:[NSURL URLWithString:u]];
+        [urls addObject:[NSURL URLWithString:[u stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     }
 
     [[NSWorkspace sharedWorkspace] openURLs:urls
