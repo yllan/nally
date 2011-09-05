@@ -48,8 +48,13 @@ static YLContextualMenuManager *gSharedInstance;
     {
         if ([comp length])
             count++;
+        else
+            return NO;
+        
+        if (count > 1)
+            return YES;
     }
-    return (count > 1);
+    return NO;
 }
 @end
 
