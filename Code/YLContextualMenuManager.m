@@ -37,6 +37,8 @@ static YLContextualMenuManager *gSharedInstance;
 @end
 
 @interface NSString (UJStringUrlCategory)
+- (BOOL) isUrlLike;
+- (NSString *)protocolPrefixAppendedUrlString;
 @end
 
 @implementation NSString (UJStringUrlCategory)
@@ -56,6 +58,19 @@ static YLContextualMenuManager *gSharedInstance;
     }
     return NO;
 }
+
+- (NSString *)protocolPrefixAppendedUrlString
+{
+    NSArray *protocols = [NSArray arrayWithObjects:@"http://", @"https://", @"ftp://", @"telnet://", @"bbs://",
+                          @"ssh://", @"mailto:", nil];
+    for (NSString *p in protocols)
+    {
+        if ([self hasPrefix:p])
+            return self;
+    }
+    return [@"http://" stringByAppendingString:self];
+}
+
 @end
 
 
@@ -94,11 +109,7 @@ static YLContextualMenuManager *gSharedInstance;
         for (NSString *block in blocks)
         {
             if ([block isUrlLike])
-            {
-                if (![block hasPrefix:@"http://"])
-                    block = [@"http://" stringByAppendingString:block];
-                [urls addObject:block];
-            }
+                [urls addObject:[block protocolPrefixAppendedUrlString]];
         }
 
         // Create menu items
@@ -160,8 +171,7 @@ static YLContextualMenuManager *gSharedInstance;
     NSMutableArray *urls = [NSMutableArray array];
     for (NSString *u in _urlsToOpen)
     {
-        if (![u hasPrefix:@"http://"])
-            u = [@"http://" stringByAppendingString:u];
+        u = [u protocolPrefixAppendedUrlString];
         [urls addObject:[NSURL URLWithString:[u stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     }
 
