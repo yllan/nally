@@ -37,12 +37,12 @@ static YLContextualMenuManager *gSharedInstance;
 @end
 
 @interface NSString (UJStringUrlCategory)
-- (BOOL) isUrlLike;
-- (NSString *)protocolPrefixAppendedUrlString;
+- (BOOL) UJ_isUrlLike;
+- (NSString *) UJ_protocolPrefixAppendedUrlString;
 @end
 
 @implementation NSString (UJStringUrlCategory)
-- (BOOL) isUrlLike
+- (BOOL) UJ_isUrlLike
 {
     NSArray *comps = [self componentsSeparatedByString:@"."];
     int count = 0;
@@ -59,10 +59,10 @@ static YLContextualMenuManager *gSharedInstance;
     return NO;
 }
 
-- (NSString *)protocolPrefixAppendedUrlString
+- (NSString *) UJ_protocolPrefixAppendedUrlString
 {
-    NSArray *protocols = [NSArray arrayWithObjects:@"http://", @"https://", @"ftp://", @"telnet://", @"bbs://",
-                          @"ssh://", @"mailto:", nil];
+    NSArray *protocols = [NSArray arrayWithObjects:@"http://", @"https://", @"ftp://", @"telnet://",
+                          @"bbs://", @"ssh://", @"mailto:", nil];
     for (NSString *p in protocols)
     {
         if ([self hasPrefix:p])
@@ -98,7 +98,7 @@ static YLContextualMenuManager *gSharedInstance;
     NSString *shortURL = [self _extractShortURLFromString: selectedString];
     NSString *longURL = [self _extractLongURLFromString: selectedString];
     
-    if ([longURL isUrlLike])
+    if ([longURL UJ_isUrlLike])
     {
         // Split the selected text into blocks seperated by one of the characters in seps
         NSCharacterSet *seps = [NSCharacterSet characterSetWithCharactersInString:@" \r\n"];
@@ -108,8 +108,8 @@ static YLContextualMenuManager *gSharedInstance;
         NSMutableArray *urls = [NSMutableArray array];
         for (NSString *block in blocks)
         {
-            if ([block isUrlLike])
-                [urls addObject:[block protocolPrefixAppendedUrlString]];
+            if ([block UJ_isUrlLike])
+                [urls addObject:[block UJ_protocolPrefixAppendedUrlString]];
         }
 
         // Create menu items
@@ -171,7 +171,7 @@ static YLContextualMenuManager *gSharedInstance;
     NSMutableArray *urls = [NSMutableArray array];
     for (NSString *u in _urlsToOpen)
     {
-        u = [u protocolPrefixAppendedUrlString];
+        u = [u UJ_protocolPrefixAppendedUrlString];
         [urls addObject:[NSURL URLWithString:[u stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     }
 
