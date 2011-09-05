@@ -30,7 +30,9 @@ static YLContextualMenuManager *gSharedInstance;
 
 - (NSString *) _extractLongURLFromString: (NSString *)s 
 {
-    return [[s componentsSeparatedByString: @"\n"] componentsJoinedByString: @""];
+    // If the line is potentially a URL that is too long (contains "\\\r"),
+    // try to fix it by removing "\\\r"
+    return [[s componentsSeparatedByString: @"\\\r"] componentsJoinedByString: @""];
 }
 @end
 
@@ -78,17 +80,9 @@ static YLContextualMenuManager *gSharedInstance;
     
     if ([longURL isUrlLike])
     {
-        // If the line is potentially a URL that is too long (contains "\\\r"),
-        // try to fix it by removing "\\\r"
-        NSMutableString *processedText = [[longURL mutableCopy] autorelease];
-        [processedText replaceOccurrencesOfString:@"\\\r"
-                                       withString:@""
-                                          options:NSLiteralSearch
-                                            range:NSMakeRange(0, [processedText length])];
-        
         // Split the selected text into blocks seperated by one of the characters in seps
-        NSCharacterSet *seps = [NSCharacterSet characterSetWithCharactersInString:@" \r"];
-        NSArray *blocks = [processedText componentsSeparatedByCharactersInSet:seps];
+        NSCharacterSet *seps = [NSCharacterSet characterSetWithCharactersInString:@" \r\n"];
+        NSArray *blocks = [longURL componentsSeparatedByCharactersInSet:seps];
 
         // Use out only lines that really are URLs
         NSMutableArray *urls = [NSMutableArray array];
