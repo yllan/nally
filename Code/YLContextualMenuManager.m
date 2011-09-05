@@ -34,6 +34,23 @@ static YLContextualMenuManager *gSharedInstance;
 }
 @end
 
+@interface NSString (UJStringUrlCategory)
+@end
+
+@implementation NSString (UJStringUrlCategory)
+- (BOOL) isUrlLike
+{
+    NSArray *comps = [self componentsSeparatedByString:@"."];
+    int count = 0;
+    for (NSString *comp in comps)
+    {
+        if ([comp length])
+            count++;
+    }
+    return (count > 1);
+}
+@end
+
 
 @implementation YLContextualMenuManager
 
@@ -59,7 +76,7 @@ static YLContextualMenuManager *gSharedInstance;
     NSString *shortURL = [self _extractShortURLFromString: selectedString];
     NSString *longURL = [self _extractLongURLFromString: selectedString];
     
-    if ([[longURL componentsSeparatedByString: @"."] count] > 1)
+    if ([longURL isUrlLike])
     {
         // If the line is potentially a URL that is too long (contains "\\\r"),
         // try to fix it by removing "\\\r"
@@ -77,7 +94,7 @@ static YLContextualMenuManager *gSharedInstance;
         NSMutableArray *urls = [NSMutableArray array];
         for (NSString *block in blocks)
         {
-            if ([[block componentsSeparatedByString:@"."] count] > 1)
+            if ([block isUrlLike])
             {
                 if (![block hasPrefix:@"http://"])
                     block = [@"http://" stringByAppendingString:block];
