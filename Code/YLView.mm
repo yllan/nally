@@ -595,14 +595,34 @@ BOOL isSpecialSymbol(unichar ch)
                                                           column: (index % gColumn)];
         if (url)
         {
+            BOOL shouldUseImagePreviewer = [gConfig shouldPreferImagePreviewer];
+            if ([e modifierFlags] & NSControlKeyMask)
+                shouldUseImagePreviewer = !shouldUseImagePreviewer;
+
             // if it's a image file, try loading it.
-            if ([url pathExtension] && !([e modifierFlags] & NSControlKeyMask) &&
+            if (shouldUseImagePreviewer &&
+                [url characterAtIndex:([url length] - 1)] != '/' &&
+                [url pathExtension] &&
                 [[NSImage imageFileTypes] containsObject:[url pathExtension]] &&
-                ! [[url pathExtension] isEqual: @"pdf"])
+                ![[url pathExtension] isEqual: @"pdf"])
             {
                 [[YLImagePreviewer alloc] initWithURL: [NSURL URLWithString: url]];
-            } else
-                [[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString: url]];
+            }
+            else
+            {
+                if ([e modifierFlags] & NSAlternateKeyMask)
+                {
+                    [[NSWorkspace sharedWorkspace] openURLs:[NSArray arrayWithObject:[NSURL URLWithString:url]]
+                                    withAppBundleIdentifier:nil
+                                                    options:NSWorkspaceLaunchWithoutActivation
+                             additionalEventParamDescriptor:nil
+                                          launchIdentifiers:nil];
+                }
+                else
+                {
+                    [[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString: url]];
+                }
+            }
         }
     }
 }

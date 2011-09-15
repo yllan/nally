@@ -59,11 +59,52 @@ static YLContextualMenuManager *gSharedInstance;
     NSString *shortURL = [self _extractShortURLFromString: selectedString];
     NSString *longURL = [self _extractLongURLFromString: selectedString];
     
-    if ([[longURL componentsSeparatedByString: @"."] count] > 1) {
-        if (![longURL hasPrefix: @"http://"]) longURL = [@"http://" stringByAppendingString: longURL];
-        item = [[[NSMenuItem alloc] initWithTitle: longURL action: @selector(openURL:) keyEquivalent: @""] autorelease];
-        [item setTarget: self];
-        [items addObject: item];
+    if ([[longURL componentsSeparatedByString: @"."] count] > 1)
+    {
+        // If the line is potentially a URL that is too long (contains "\\\r"),
+        // try to fix it by removing "\\\r"
+        NSMutableString *processedText = [[longURL mutableCopy] autorelease];
+        [processedText replaceOccurrencesOfString:@"\\\r"
+                                       withString:@""
+                                          options:NSLiteralSearch
+                                            range:NSMakeRange(0, [processedText length])];
+        
+        // Split the selected text into blocks seperated by one of the characters in seps
+        NSCharacterSet *seps = [NSCharacterSet characterSetWithCharactersInString:@" \r"];
+        NSArray *blocks = [processedText componentsSeparatedByCharactersInSet:seps];
+
+        // Use out only lines that really are URLs
+        NSMutableArray *urls = [NSMutableArray array];
+        for (NSString *block in blocks)
+        {
+            if ([[block componentsSeparatedByString:@"."] count] > 1)
+            {
+                if (![block hasPrefix:@"http://"])
+                    block = [@"http://" stringByAppendingString:block];
+                [urls addObject:block];
+            }
+        }
+
+        // Create menu items
+        // If there is only one line, then use the text as title
+        // Otherwise use the localized string of "Open mutiple URLs"
+        NSString *title;
+        if ([urls count] > 1)
+            title = NSLocalizedString(@"Open mutiple URLs", @"Open mutiple URLs");
+        else if ([urls count] == 1)
+            title = [urls objectAtIndex:0];
+
+        if ([urls count])
+        {
+            if (_urlsToOpen)
+                [_urlsToOpen release];
+            _urlsToOpen = [urls copy];
+            item = [[[NSMenuItem alloc] initWithTitle:title
+                                               action:@selector(openURL:)
+                                        keyEquivalent:@""] autorelease];
+            [item setTarget: self];
+            [items addObject: item];
+        }
     }
     
     if ([shortURL length] > 0 && [shortURL length] < 8) {
@@ -100,10 +141,21 @@ static YLContextualMenuManager *gSharedInstance;
 
 - (IBAction) openURL: (id)sender
 {
-    NSString *u = [sender title];
-    if (![u hasPrefix: @"http://"])
-        u = [@"http://" stringByAppendingString: u];
-    [[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString: u]];
+    NSMutableArray *urls = [NSMutableArray array];
+    for (NSString *u in _urlsToOpen)
+    {
+        if (![u hasPrefix:@"http://"])
+            u = [@"http://" stringByAppendingString:u];
+        [urls addObject:[NSURL URLWithString:[u stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
+    }
+
+    [[NSWorkspace sharedWorkspace] openURLs:urls
+                    withAppBundleIdentifier:nil
+                                    options:NSWorkspaceLaunchDefault
+             additionalEventParamDescriptor:nil
+                          launchIdentifiers:nil];
+    [_urlsToOpen release];
+    _urlsToOpen = nil;
 }
 
 - (IBAction) google: (id)sender

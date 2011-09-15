@@ -2,13 +2,13 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1050</int>
-		<string key="IBDocument.SystemVersion">10H574</string>
-		<string key="IBDocument.InterfaceBuilderVersion">804</string>
-		<string key="IBDocument.AppKitVersion">1038.35</string>
+		<string key="IBDocument.SystemVersion">10K549</string>
+		<string key="IBDocument.InterfaceBuilderVersion">823</string>
+		<string key="IBDocument.AppKitVersion">1038.36</string>
 		<string key="IBDocument.HIToolboxVersion">461.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
-			<string key="NS.object.0">804</string>
+			<string key="NS.object.0">823</string>
 		</object>
 		<array class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<integer value="1"/>
@@ -37,7 +37,7 @@
 					<object class="NSButton" id="16462208">
 						<reference key="NSNextResponder" ref="524402941"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{66, 127}, {240, 18}}</string>
+						<string key="NSFrame">{{47, 138}, {240, 18}}</string>
 						<reference key="NSSuperview" ref="524402941"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="65426581">
@@ -65,18 +65,40 @@
 							<int key="NSPeriodicInterval">25</int>
 						</object>
 					</object>
-					<object class="NSButton" id="947327116">
+					<object class="NSButton" id="201019369">
 						<reference key="NSNextResponder" ref="524402941"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{66, 55}, {240, 18}}</string>
+						<string key="NSFrame">{{47, 64}, {286, 18}}</string>
 						<reference key="NSSuperview" ref="524402941"/>
 						<bool key="NSEnabled">YES</bool>
-						<object class="NSButtonCell" key="NSCell" id="871653741">
+						<object class="NSButtonCell" key="NSCell" id="825483238">
+							<int key="NSCellFlags">-2080244224</int>
+							<int key="NSCellFlags2">0</int>
+							<string key="NSContents">Use built-in image viewer to open images</string>
+							<reference key="NSSupport" ref="961226193"/>
+							<reference key="NSControlView" ref="201019369"/>
+							<int key="NSButtonFlags">1211912703</int>
+							<int key="NSButtonFlags2">2</int>
+							<reference key="NSNormalImage" ref="746061648"/>
+							<reference key="NSAlternateImage" ref="78480603"/>
+							<string key="NSAlternateContents"/>
+							<string key="NSKeyEquivalent"/>
+							<int key="NSPeriodicDelay">200</int>
+							<int key="NSPeriodicInterval">25</int>
+						</object>
+					</object>
+					<object class="NSButton" id="246581525">
+						<reference key="NSNextResponder" ref="524402941"/>
+						<int key="NSvFlags">268</int>
+						<string key="NSFrame">{{47, 29}, {240, 18}}</string>
+						<reference key="NSSuperview" ref="524402941"/>
+						<bool key="NSEnabled">YES</bool>
+						<object class="NSButtonCell" key="NSCell" id="1034766106">
 							<int key="NSCellFlags">-2080244224</int>
 							<int key="NSCellFlags2">0</int>
 							<string key="NSContents">Confirm on close</string>
 							<reference key="NSSupport" ref="961226193"/>
-							<reference key="NSControlView" ref="947327116"/>
+							<reference key="NSControlView" ref="246581525"/>
 							<int key="NSButtonFlags">1211912703</int>
 							<int key="NSButtonFlags2">2</int>
 							<reference key="NSNormalImage" ref="746061648"/>
@@ -90,7 +112,7 @@
 					<object class="NSButton" id="495655680">
 						<reference key="NSNextResponder" ref="524402941"/>
 						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{66, 91}, {230, 18}}</string>
+						<string key="NSFrame">{{47, 102}, {230, 18}}</string>
 						<reference key="NSSuperview" ref="524402941"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSButtonCell" key="NSCell" id="969183145">
@@ -1748,22 +1770,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBBindingConnection" key="connection">
-						<string key="label">value: values.ConfirmOnClose</string>
-						<reference key="source" ref="947327116"/>
-						<reference key="destination" ref="458178596"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="947327116"/>
-							<reference key="NSDestination" ref="458178596"/>
-							<string key="NSLabel">value: values.ConfirmOnClose</string>
-							<string key="NSBinding">value</string>
-							<string key="NSKeyPath">values.ConfirmOnClose</string>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">343</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
 						<string key="label">value: englishFontPaddingLeft</string>
 						<reference key="source" ref="390489110"/>
 						<reference key="destination" ref="190752615"/>
@@ -2250,6 +2256,38 @@
 					</object>
 					<int key="connectionID">786</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: values.ConfirmOnClose</string>
+						<reference key="source" ref="246581525"/>
+						<reference key="destination" ref="458178596"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="246581525"/>
+							<reference key="NSDestination" ref="458178596"/>
+							<string key="NSLabel">value: values.ConfirmOnClose</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">values.ConfirmOnClose</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">890</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: shouldPreferImagePreviewer</string>
+						<reference key="source" ref="201019369"/>
+						<reference key="destination" ref="190752615"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="201019369"/>
+							<reference key="NSDestination" ref="190752615"/>
+							<string key="NSLabel">value: shouldPreferImagePreviewer</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">shouldPreferImagePreviewer</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">898</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -2281,13 +2319,14 @@
 						<int key="objectID">1</int>
 						<reference key="object" ref="524402941"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="495655680"/>
-							<reference ref="947327116"/>
-							<reference ref="16462208"/>
 							<reference ref="209295765"/>
 							<reference ref="775778296"/>
 							<reference ref="519225274"/>
 							<reference ref="86397260"/>
+							<reference ref="495655680"/>
+							<reference ref="246581525"/>
+							<reference ref="16462208"/>
+							<reference ref="201019369"/>
 						</array>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">General</string>
@@ -2297,14 +2336,6 @@
 						<reference key="object" ref="495655680"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="969183145"/>
-						</array>
-						<reference key="parent" ref="524402941"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">4</int>
-						<reference key="object" ref="947327116"/>
-						<array class="NSMutableArray" key="children">
-							<reference ref="871653741"/>
 						</array>
 						<reference key="parent" ref="524402941"/>
 					</object>
@@ -2595,11 +2626,6 @@
 						<int key="objectID">840</int>
 						<reference key="object" ref="969183145"/>
 						<reference key="parent" ref="495655680"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">841</int>
-						<reference key="object" ref="871653741"/>
-						<reference key="parent" ref="947327116"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">842</int>
@@ -3195,6 +3221,32 @@
 						<reference key="object" ref="896761758"/>
 						<reference key="parent" ref="554196480"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">888</int>
+						<reference key="object" ref="246581525"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="1034766106"/>
+						</array>
+						<reference key="parent" ref="524402941"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">889</int>
+						<reference key="object" ref="1034766106"/>
+						<reference key="parent" ref="246581525"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">893</int>
+						<reference key="object" ref="201019369"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="825483238"/>
+						</array>
+						<reference key="parent" ref="524402941"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">894</int>
+						<reference key="object" ref="825483238"/>
+						<reference key="parent" ref="201019369"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -3286,6 +3338,9 @@
 				<string key="29.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="29.ImportedFromIB2"/>
 				<string key="3.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<object class="NSAffineTransform" key="3.IBViewBoundsToFrameTransform">
+					<bytes key="NSTransformStruct">P4AAAL+AAABCHAAAwuwAAA</bytes>
+				</object>
 				<boolean value="YES" key="3.ImportedFromIB2"/>
 				<string key="30.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="30.ImportedFromIB2"/>
@@ -3301,8 +3356,6 @@
 				<boolean value="YES" key="35.ImportedFromIB2"/>
 				<string key="36.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="36.ImportedFromIB2"/>
-				<string key="4.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<boolean value="YES" key="4.ImportedFromIB2"/>
 				<string key="45.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="45.ImportedFromIB2"/>
 				<string key="46.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -3314,6 +3367,9 @@
 				<string key="49.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="49.ImportedFromIB2"/>
 				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<object class="NSAffineTransform" key="5.IBViewBoundsToFrameTransform">
+					<bytes key="NSTransformStruct">P4AAAL+AAABCHAAAwxoAAA</bytes>
+				</object>
 				<boolean value="YES" key="5.ImportedFromIB2"/>
 				<string key="50.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="50.ImportedFromIB2"/>
@@ -3369,7 +3425,6 @@
 				<string key="836.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="836.ImportedFromIB2"/>
 				<string key="840.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
-				<string key="841.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="842.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="843.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="844.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -3416,6 +3471,18 @@
 				<string key="885.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="886.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="887.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="888.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<object class="NSAffineTransform" key="888.IBViewBoundsToFrameTransform">
+					<bytes key="NSTransformStruct">P4AAAL+AAABCPAAAwjQAAA</bytes>
+				</object>
+				<boolean value="YES" key="888.ImportedFromIB2"/>
+				<string key="889.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="893.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<object class="NSAffineTransform" key="893.IBViewBoundsToFrameTransform">
+					<bytes key="NSTransformStruct">P4AAAL+AAABCUAAAwiAAAA</bytes>
+				</object>
+				<boolean value="YES" key="893.ImportedFromIB2"/>
+				<string key="894.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="95.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="95.ImportedFromIB2"/>
 			</dictionary>
@@ -3423,7 +3490,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">887</int>
+			<int key="maxID">898</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3589,6 +3656,13 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier" id="459638410">
 						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">HMBlkAppKit.framework/Headers/HMAppKitEx.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSApplication</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">PSMTabBarControl.framework/Headers/PSMTabDragAssistant.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -3935,6 +4009,13 @@
 					<string key="className">NSObject</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">PSMTabBarControl.framework/Headers/PSMTabBarCell.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">PSMTabBarControl.framework/Headers/PSMTabBarControl.h</string>
 					</object>
 				</object>
@@ -4104,7 +4185,7 @@
 		</object>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>
-			<integer value="1050" key="NS.object.0"/>
+			<integer value="1060" key="NS.object.0"/>
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<string key="IBDocument.LastKnownRelativeProjectPath">../../Nally.xcodeproj</string>

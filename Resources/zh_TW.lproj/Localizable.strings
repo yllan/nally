@@ -13,6 +13,7 @@
 /* Menu */
 "Lookup in Dictionary" = "查詢字典";
 "Copy" = "拷貝";
+"Open mutiple URLs" = "開啓多個網址";
 
 /* Default Button */
 "Quit" = "結束";

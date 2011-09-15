@@ -9,8 +9,9 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface YLContextualMenuManager : NSObject {
-
+@interface YLContextualMenuManager : NSObject
+{
+    NSArray *_urlsToOpen;
 }
 + (YLContextualMenuManager *) sharedInstance ;
 - (id) init ;
