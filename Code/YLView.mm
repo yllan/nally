@@ -593,7 +593,7 @@ BOOL isSpecialSymbol(unichar ch)
         
         NSString *url = [[self frontMostTerminal] urlStringAtRow: (index / gColumn) 
                                                           column: (index % gColumn)];
-        if (url)
+        if (url && !([e modifierFlags] & NSCommandKeyMask))
         {
             BOOL shouldUseImagePreviewer = [gConfig shouldPreferImagePreviewer];
             if ([e modifierFlags] & NSControlKeyMask)
