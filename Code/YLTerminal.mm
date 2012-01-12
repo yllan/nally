@@ -152,10 +152,10 @@ if (_cursorX <= _column - 1) { \
     for (i = 0; i < len; i++) {
         c = bytes[i];
 //      if (c == 0x00) continue;
-        
         switch (_state)
         {
         case TP_NORMAL:
+        {
             if (NO) { // code alignment
             } else if (c == ASC_NUL) { // do nothing
             } else if (c == ASC_ETX) { // FLOW CONTROL? do nothing
@@ -267,8 +267,9 @@ if (_cursorX <= _column - 1) { \
                 SET_GRID_BYTE(c);
 
             break;
-
+        }
         case TP_ESCAPE:
+        {
 			if (NO) {
 			} else if (c == ASC_ESC) { // ESCESC according to zterm this happens
                 _state = TP_ESCAPE;
@@ -374,7 +375,7 @@ if (_cursorX <= _column - 1) { \
             }
 
             break;
-
+        }
         case TP_SCS:
 /*
 			if (NO) {

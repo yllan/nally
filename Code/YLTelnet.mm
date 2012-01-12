@@ -215,6 +215,7 @@ void dump_packet(unsigned char *s, int length)
 		switch (_state) {
 			case TOP_LEVEL:
 			case SEENCR:
+            {
 				if (c == NUL && _state == SEENCR)
 					_state = TOP_LEVEL;
 				else if (c == IAC)
@@ -231,7 +232,9 @@ void dump_packet(unsigned char *s, int length)
 						_state = TOP_LEVEL;
 				}
 				break;
+            }
 			case SEENIAC:
+            {
 				if (c == DO || c == DONT || c == WILL || c == WONT) {
 					_typeOfOperation = c;
 					if (c == DO)
@@ -255,6 +258,7 @@ void dump_packet(unsigned char *s, int length)
 					_state = TOP_LEVEL;
 				}
 				break;
+            }
 			case SEENWILL: 
 			{
 				if (c == TELOPT_ECHO || c == TELOPT_SGA) 
@@ -310,6 +314,7 @@ void dump_packet(unsigned char *s, int length)
 					_state = SUBNEGOT;
 				} else {
 					const unsigned char *buf = (const unsigned char *)[_sbBuffer bytes];
+                    if ([_sbBuffer length])
 					if (_sbOption == TELOPT_TTYPE && [_sbBuffer length] == 1 && buf[0] == TELQUAL_SEND) {
 						unsigned char b[] = {IAC, SB, TELOPT_TTYPE, TELQUAL_IS, 'v', 't', '1', '0', '0', IAC, SE};
                         [self performSelector:@selector(sendData:) withObject: [NSData dataWithBytes: b length: 11] afterDelay: 0.001];
