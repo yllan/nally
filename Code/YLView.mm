@@ -596,7 +596,7 @@ BOOL isSpecialSymbol(unichar ch)
         if (url && !([e modifierFlags] & NSCommandKeyMask))
         {
             BOOL shouldUseImagePreviewer = [gConfig shouldPreferImagePreviewer];
-            if ([e modifierFlags] & NSControlKeyMask)
+            if ([e modifierFlags] & NSShiftKeyMask)
                 shouldUseImagePreviewer = !shouldUseImagePreviewer;
 
             // if it's a image file, try loading it.
@@ -1390,7 +1390,7 @@ BOOL isSpecialSymbol(unichar ch)
     
 	[_textField setHidden: YES];
 	[_markedText release];
-	_markedText = nil;	
+	_markedText = nil;
 	
     NSMutableString *mStr = [NSMutableString stringWithString: aString];
     [mStr replaceOccurrencesOfString: @"\n"
