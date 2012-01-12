@@ -30,8 +30,47 @@ static YLContextualMenuManager *gSharedInstance;
 
 - (NSString *) _extractLongURLFromString: (NSString *)s 
 {
-    return [[s componentsSeparatedByString: @"\n"] componentsJoinedByString: @""];
+    // If the line is potentially a URL that is too long (contains "\\\r"),
+    // try to fix it by removing "\\\r"
+    return [[s componentsSeparatedByString: @"\\\r"] componentsJoinedByString: @""];
 }
+@end
+
+@interface NSString (UJStringUrlCategory)
+- (BOOL) UJ_isUrlLike;
+- (NSString *) UJ_protocolPrefixAppendedUrlString;
+@end
+
+@implementation NSString (UJStringUrlCategory)
+- (BOOL) UJ_isUrlLike
+{
+    NSArray *comps = [self componentsSeparatedByString:@"."];
+    int count = 0;
+    for (NSString *comp in comps)
+    {
+        if ([comp length])
+            count++;
+        else
+            return NO;
+        
+        if (count > 1)
+            return YES;
+    }
+    return NO;
+}
+
+- (NSString *) UJ_protocolPrefixAppendedUrlString
+{
+    NSArray *protocols = [NSArray arrayWithObjects:@"http://", @"https://", @"ftp://", @"telnet://",
+                          @"bbs://", @"ssh://", @"mailto:", nil];
+    for (NSString *p in protocols)
+    {
+        if ([self hasPrefix:p])
+            return self;
+    }
+    return [@"http://" stringByAppendingString:self];
+}
+
 @end
 
 
@@ -59,30 +98,18 @@ static YLContextualMenuManager *gSharedInstance;
     NSString *shortURL = [self _extractShortURLFromString: selectedString];
     NSString *longURL = [self _extractLongURLFromString: selectedString];
     
-    if ([[longURL componentsSeparatedByString: @"."] count] > 1)
+    if ([longURL UJ_isUrlLike])
     {
-        // If the line is potentially a URL that is too long (contains "\\\r"),
-        // try to fix it by removing "\\\r"
-        NSMutableString *processedText = [[longURL mutableCopy] autorelease];
-        [processedText replaceOccurrencesOfString:@"\\\r"
-                                       withString:@""
-                                          options:NSLiteralSearch
-                                            range:NSMakeRange(0, [processedText length])];
-        
         // Split the selected text into blocks seperated by one of the characters in seps
-        NSCharacterSet *seps = [NSCharacterSet characterSetWithCharactersInString:@" \r"];
-        NSArray *blocks = [processedText componentsSeparatedByCharactersInSet:seps];
+        NSCharacterSet *seps = [NSCharacterSet characterSetWithCharactersInString:@" \r\n"];
+        NSArray *blocks = [longURL componentsSeparatedByCharactersInSet:seps];
 
         // Use out only lines that really are URLs
         NSMutableArray *urls = [NSMutableArray array];
         for (NSString *block in blocks)
         {
-            if ([[block componentsSeparatedByString:@"."] count] > 1)
-            {
-                if (![block hasPrefix:@"http://"])
-                    block = [@"http://" stringByAppendingString:block];
-                [urls addObject:block];
-            }
+            if ([block UJ_isUrlLike])
+                [urls addObject:[block UJ_protocolPrefixAppendedUrlString]];
         }
 
         // Create menu items
@@ -144,8 +171,7 @@ static YLContextualMenuManager *gSharedInstance;
     NSMutableArray *urls = [NSMutableArray array];
     for (NSString *u in _urlsToOpen)
     {
-        if (![u hasPrefix:@"http://"])
-            u = [@"http://" stringByAppendingString:u];
+        u = [u UJ_protocolPrefixAppendedUrlString];
         [urls addObject:[NSURL URLWithString:[u stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]];
     }
 
