@@ -630,6 +630,7 @@ BOOL isSpecialSymbol(unichar ch)
 - (void) keyDown: (NSEvent *)e
 {
     [self clearSelection];
+    
 	unichar c = [[e characters] characterAtIndex: 0];
 	unsigned char arrow[6] = {0x1B, 0x4F, 0x00, 0x1B, 0x4F, 0x00};
 	unsigned char buf[10];
@@ -641,6 +642,33 @@ BOOL isSpecialSymbol(unichar ch)
 		[[self frontMostConnection] sendBytes: buf length: 1];
         return;
 	}
+    else if ([e modifierFlags] & NSCommandKeyMask)
+    {
+        buf[0] = 0x1b;
+        buf[1] = 0x5b;
+        buf[2] = 0x00;
+        buf[3] = 0x7e;
+        switch (c)
+        {
+            case NSUpArrowFunctionKey:
+                buf[2] = 0x35;
+                break;
+            case NSDownArrowFunctionKey:
+                buf[2] = 0x36;
+                break;
+            case NSLeftArrowFunctionKey:
+                buf[2] = 0x31;
+                break;
+            case NSRightArrowFunctionKey:
+                buf[2] = 0x34;
+                break;
+            default:
+                break;
+        }
+        if (buf[2] != 0x00)
+            [[self frontMostConnection] sendBytes:buf length:4];
+        return;
+    }
 	
 	if (c == NSUpArrowFunctionKey) arrow[2] = arrow[5] = 'A';
 	if (c == NSDownArrowFunctionKey) arrow[2] = arrow[5] = 'B';
