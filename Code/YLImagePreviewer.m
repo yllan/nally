@@ -229,7 +229,10 @@ NSStringEncoding encodingFromYLEncoding(YLEncoding ylenc)
                             encodingFromYLEncoding(YLGBKEncoding)];
 
     if (fileName)
+    {
         _currentFileDownloading = [fileName retain];
+        _currentFileUrlDownloading = [[response URL] retain];
+    }
     
     _totalLength = [response expectedContentLength];
 
@@ -279,14 +282,24 @@ NSStringEncoding encodingFromYLEncoding(YLEncoding ylenc)
 
     NSImage *image = [[NSImage alloc] initWithData: _receivedData];
     if (image == nil || [[image representations] count] == 0)
-    {
+    {/*
         NSString *text = [NSString stringWithFormat: @"Failed to download file %@", _currentFileDownloading];
         NSAlert *alert = [NSAlert alertWithMessageText: @"Failed to download image." 
                                          defaultButton: @"OK" 
                                        alternateButton: nil 
                                            otherButton: nil 
                              informativeTextWithFormat: text];
-        [alert runModal];
+        [alert runModal];*/
+        
+        // Added by uranusjr
+        // On loading error, revert to opening with browser rather than declar failure
+        
+        [_indicator removeFromSuperview];
+        [_indicator release];
+        [self windowWillClose:[NSNotification notificationWithName:@"LoadingFail" object:image]];
+        [image autorelease];
+        [[NSWorkspace sharedWorkspace] openURL:_currentFileUrlDownloading];
+        [_currentFileUrlDownloading release];
     }
     else
         [self showImage: image 
