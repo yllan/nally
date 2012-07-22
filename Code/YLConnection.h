@@ -33,7 +33,7 @@
 - (NSDate *) lastTouchDate;
 @end
 
-@interface YLConnection : NSObject <YLConnectionProtocol> {
+@interface YLConnection : NSObject <YLConnectionProtocol, NSStreamDelegate> {
     NSString *_connectionName;
     NSString *_connectionAddress;
     NSImage *_icon;

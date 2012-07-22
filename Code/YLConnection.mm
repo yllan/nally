@@ -84,7 +84,7 @@
 - (BOOL) connectToSite: (YLSite *)site
 {
     [self setSite: site];
-    return [self connectToAddress: [site address]];
+    return [self connectToAddress: (NSString *)[site address]];
 }
 
 - (BOOL) connectToAddress: (NSString *)addr

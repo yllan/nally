@@ -38,6 +38,9 @@ extern "C" {
     
     int _selectionLocation;
     int _selectionLength;
+    
+    BOOL _shouldOpenUrlInBackground;
+    BOOL _shouldUseImagePreviewer;
 }
 
 - (void) configure;
@@ -72,4 +75,6 @@ extern "C" {
 - (BOOL) hasBlinkCell;
 
 - (void) insertText: (id)aString withDelay: (int)microsecond;
+
+- (void) loadUrlOfString: (NSString *)url;
 @end

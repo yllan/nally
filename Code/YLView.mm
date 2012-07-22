@@ -445,6 +445,31 @@ BOOL isSpecialSymbol(unichar ch)
     }
 }
 
+- (void) loadUrlOfString:(NSString *)url
+{
+    // if it's a image file, try loading it.
+    if (_shouldUseImagePreviewer &&
+        [url characterAtIndex:([url length] - 1)] != '/' &&
+        [url pathExtension] &&
+        [[NSImage imageFileTypes] containsObject:[url pathExtension]] &&
+        ![[url pathExtension] isEqual: @"pdf"])
+    {
+        [[YLImagePreviewer alloc] initWithURL: [NSURL URLWithString: url]];
+    }
+    else
+    {
+        NSWorkspaceLaunchOptions launchOptions =
+            _shouldOpenUrlInBackground ? NSWorkspaceLaunchWithoutActivation : NSWorkspaceLaunchDefault;
+        
+        [[NSWorkspace sharedWorkspace] openURLs:[NSArray arrayWithObject:[NSURL URLWithString:url]]
+                        withAppBundleIdentifier:nil
+                                        options:launchOptions
+                 additionalEventParamDescriptor:nil
+                              launchIdentifiers:nil];
+    }
+    
+}
+
 #pragma mark -
 #pragma mark Conversion
 
@@ -593,35 +618,23 @@ BOOL isSpecialSymbol(unichar ch)
         
         NSString *url = [[self frontMostTerminal] urlStringAtRow: (index / gColumn) 
                                                           column: (index % gColumn)];
-        if (url)
+        if (url && !([e modifierFlags] & NSCommandKeyMask))
         {
-            BOOL shouldUseImagePreviewer = [gConfig shouldPreferImagePreviewer];
-            if ([e modifierFlags] & NSControlKeyMask)
-                shouldUseImagePreviewer = !shouldUseImagePreviewer;
-
-            // if it's a image file, try loading it.
-            if (shouldUseImagePreviewer &&
-                [url characterAtIndex:([url length] - 1)] != '/' &&
-                [url pathExtension] &&
-                [[NSImage imageFileTypes] containsObject:[url pathExtension]] &&
-                ![[url pathExtension] isEqual: @"pdf"])
+            _shouldOpenUrlInBackground = [e modifierFlags] & NSAlternateKeyMask;
+            _shouldUseImagePreviewer = [gConfig shouldPreferImagePreviewer];
+            if ([e modifierFlags] & NSShiftKeyMask)
+                _shouldUseImagePreviewer = !_shouldUseImagePreviewer;
+            
+            // Try to revert shortened URLs
+            if ([url length] < 25 && [url hasPrefix:@"http://"])  // FIXME: Need a better way to identify short URLs
             {
-                [[YLImagePreviewer alloc] initWithURL: [NSURL URLWithString: url]];
+                [NSURLConnection connectionWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]
+                                              delegate:self];
+                // Do the rest in the delegate method -connection:didReceiveResponse:
             }
             else
             {
-                if ([e modifierFlags] & NSAlternateKeyMask)
-                {
-                    [[NSWorkspace sharedWorkspace] openURLs:[NSArray arrayWithObject:[NSURL URLWithString:url]]
-                                    withAppBundleIdentifier:nil
-                                                    options:NSWorkspaceLaunchWithoutActivation
-                             additionalEventParamDescriptor:nil
-                                          launchIdentifiers:nil];
-                }
-                else
-                {
-                    [[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString: url]];
-                }
+                [self loadUrlOfString:url];
             }
         }
     }
@@ -630,6 +643,7 @@ BOOL isSpecialSymbol(unichar ch)
 - (void) keyDown: (NSEvent *)e
 {
     [self clearSelection];
+    
 	unichar c = [[e characters] characterAtIndex: 0];
 	unsigned char arrow[6] = {0x1B, 0x4F, 0x00, 0x1B, 0x4F, 0x00};
 	unsigned char buf[10];
@@ -641,6 +655,33 @@ BOOL isSpecialSymbol(unichar ch)
 		[[self frontMostConnection] sendBytes: buf length: 1];
         return;
 	}
+    else if ([e modifierFlags] & NSCommandKeyMask)
+    {
+        buf[0] = 0x1b;
+        buf[1] = 0x5b;
+        buf[2] = 0x00;
+        buf[3] = 0x7e;
+        switch (c)
+        {
+            case NSUpArrowFunctionKey:
+                buf[2] = 0x35;
+                break;
+            case NSDownArrowFunctionKey:
+                buf[2] = 0x36;
+                break;
+            case NSLeftArrowFunctionKey:
+                buf[2] = 0x31;
+                break;
+            case NSRightArrowFunctionKey:
+                buf[2] = 0x34;
+                break;
+            default:
+                break;
+        }
+        if (buf[2] != 0x00)
+            [[self frontMostConnection] sendBytes:buf length:4];
+        return;
+    }
 	
 	if (c == NSUpArrowFunctionKey) arrow[2] = arrow[5] = 'A';
 	if (c == NSDownArrowFunctionKey) arrow[2] = arrow[5] = 'B';
@@ -1390,7 +1431,7 @@ BOOL isSpecialSymbol(unichar ch)
     
 	[_textField setHidden: YES];
 	[_markedText release];
-	_markedText = nil;	
+	_markedText = nil;
 	
     NSMutableString *mStr = [NSMutableString stringWithString: aString];
     [mStr replaceOccurrencesOfString: @"\n"
@@ -1578,6 +1619,25 @@ BOOL isSpecialSymbol(unichar ch)
 - (NSArray*) validAttributesForMarkedText
 {
 	return [NSArray array];
+}
+
+#pragma mark -
+#pragma mark NSURLConnectionDelegate methods
+
+-(void)connection: (NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    NSString *url = [[response URL] absoluteString];
+    [connection cancel];
+    [self loadUrlOfString:url];
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    NSLog(@"Error!");
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
 }
 
 @end
