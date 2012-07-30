@@ -115,20 +115,21 @@ static YLContextualMenuManager *gSharedInstance;
         // Create menu items
         // If there is only one line, then use the text as title
         // Otherwise use the localized string of "Open mutiple URLs"
-        NSString *title;
-        if ([urls count] > 1)
-            title = NSLocalizedString(@"Open mutiple URLs", @"Open mutiple URLs");
-        else if ([urls count] == 1)
-            title = [urls objectAtIndex:0];
-
-        if ([urls count])
+        
+        if ([urls count] > 0)
         {
+            NSString *title = @"";
+            if ([urls count] > 1)
+                title = NSLocalizedString(@"Open mutiple URLs", @"Open mutiple URLs");
+            else if ([urls count] == 1)
+                title = [urls objectAtIndex: 0];
+
             if (_urlsToOpen)
                 [_urlsToOpen release];
             _urlsToOpen = [urls copy];
-            item = [[[NSMenuItem alloc] initWithTitle:title
-                                               action:@selector(openURL:)
-                                        keyEquivalent:@""] autorelease];
+            item = [[[NSMenuItem alloc] initWithTitle: title
+                                               action: @selector(openURL:)
+                                        keyEquivalent: @""] autorelease];
             [item setTarget: self];
             [items addObject: item];
         }

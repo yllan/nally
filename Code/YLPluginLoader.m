@@ -14,7 +14,8 @@ NSString * const kPrefixBundleIDStr = @"org.yllan.Nally.Plugin";
 
 - (id) init
 {
-    if ([super init])
+    self = [super init];
+    if (self)
     {
         bundleInstanceList = [[NSMutableArray alloc] init];
         [NSThread detachNewThreadSelector: @selector(startSearch:)

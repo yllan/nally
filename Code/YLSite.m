@@ -12,7 +12,8 @@
 
 - (id) init
 {
-    if ([super init]) {
+    self = [super init];
+    if (self) {
         [self setName: @"Site Name"];
         [self setAddress: @"(your.site.org)"];
         [self setEncoding: YLBig5Encoding];

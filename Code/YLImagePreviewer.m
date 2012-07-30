@@ -60,7 +60,8 @@
 
 - (id) initWithURL: (NSURL *)url
 {
-    if ([super init])
+    self = [super init];
+    if (self)
     {
         // create the request
         NSURLRequest *request = [NSURLRequest requestWithURL: url

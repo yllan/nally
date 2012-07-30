@@ -24,7 +24,8 @@
 
 - (YLSSH *) init
 {
-    if ([super init]) {
+    self = [super init];
+    if (self) {
         _pid = 0;
         _fileDescriptor = -1;
         _loginAsBBS = NO;

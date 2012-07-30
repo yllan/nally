@@ -20,7 +20,8 @@ enum {
 
 - (id) initWithFrame: (NSRect)frame previewer: (YLImagePreviewer *)thePreviewer
 {
-    if ([super initWithFrame: frame])
+    self = [super initWithFrame: frame];
+    if (self)
     {
         tipsState = kShowTipsGray;
         tipsRect = NSMakeRect((frame.size.width - kFloatRectWidth) / 2, 10, kFloatRectWidth, kFloatRectHeight);

@@ -198,7 +198,8 @@ BOOL isSpecialSymbol(unichar ch)
 
 - (id) initWithFrame: (NSRect)frame
 {
-    if ([super initWithFrame: frame]) {
+    self = [super initWithFrame: frame];
+    if (self) {
         [self configure];
         _selectionLength = 0;
         _selectionLocation = 0;
@@ -826,12 +827,14 @@ BOOL isSpecialSymbol(unichar ch)
 
 - (void) drawBlink
 {
-    NSAutoreleasePool *pool = [NSAutoreleasePool new];
-
     int c, r;
     if (![gConfig blinkTicker]) return;
+    NSAutoreleasePool *pool = [NSAutoreleasePool new];
     id ds = [self frontMostTerminal];
-    if (!ds) return;
+    if (!ds) {
+        [pool drain];
+        return;
+    }
     for (r = 0; r < gRow; r++) {
         cell *currRow = [ds cellsOfRow: r];
         for (c = 0; c < gColumn; c++) {
@@ -843,8 +846,7 @@ BOOL isSpecialSymbol(unichar ch)
             }
         }
     }
-    
-    [pool release];
+    [pool drain];
 }
 
 - (void) drawSelection
@@ -969,7 +971,7 @@ BOOL isSpecialSymbol(unichar ch)
 - (void) drawStringForRow: (int)r context: (CGContextRef)myCGContext
 {
 	int i, c, x;
-	int start, end;
+	int start, end = 0;
 	unichar textBuf[gColumn];
 	BOOL isDoubleByte[gColumn];
 	BOOL isDoubleColor[gColumn];
@@ -1231,16 +1233,13 @@ BOOL isSpecialSymbol(unichar ch)
         Obviously, the current method draws less pixels than the second one. So it's optimized already!
 	 */
 	for (c = start; c <= end; c++) {
-		if (c < end) {
-			currAttr = (currRow + c)->attr;
-			currentBackgroundColor = bgColorIndexOfAttribute(currAttr);
-            currentBold = bgBoldOfAttribute(currAttr);
-		}
+        currAttr = (currRow + c)->attr;
+        currentBackgroundColor = bgColorIndexOfAttribute(currAttr);
+        currentBold = bgBoldOfAttribute(currAttr);
 		
 		if (currentBackgroundColor != lastBackgroundColor || currentBold != lastBold || c == end) {
 			/* Draw Background */
-			NSRect rect = NSMakeRect((c - length) * _fontWidth, (gRow - 1 - r) * _fontHeight,
-								  _fontWidth * length, _fontHeight);
+			NSRect rect = NSMakeRect((c - length) * _fontWidth, (gRow - 1 - r) * _fontHeight, _fontWidth * length, _fontHeight);
 			[[gConfig colorAtIndex: lastBackgroundColor hilite: lastBold] set];
 			// [NSBezierPath fillRect: rect];
             NSRectFill(rect);

@@ -49,7 +49,8 @@ static unsigned short gEmptyAttr;
 
 - (YLTerminal *) init
 {
-    if ([super init]) {
+    self = [super init];
+    if (self) {
         _savedCursorX = _savedCursorY = -1;
         _row = [[YLLGlobalConfig sharedInstance] row];
         _column = [[YLLGlobalConfig sharedInstance] column];
