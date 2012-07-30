@@ -1318,6 +1318,11 @@ BOOL isSpecialSymbol(unichar ch)
 #pragma mark -
 #pragma mark Override
 
+- (BOOL) mouseDownCanMoveWindow
+{
+    return NO;
+}
+
 - (BOOL) isFlipped
 {
 	return NO;
