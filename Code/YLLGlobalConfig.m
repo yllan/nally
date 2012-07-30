@@ -103,8 +103,8 @@ static YLLGlobalConfig *sSharedInstance;
         [self setColorWhiteHilite: [defaults myColorForKey: @"ColorWhiteHilite"]]; // Foreground Color
         [self setColorBG: [defaults myColorForKey: @"ColorBG"]];
         [self setColorBGHilite: [defaults myColorForKey: @"ColorBGHilite"]]; 
-        _colorTable[0][8] = [[NSColor colorWithDeviceRed: 0.75 green: 0.75 blue: 0.75 alpha: 1.0] retain];
-        _colorTable[1][8] = [[NSColor colorWithDeviceRed: 1.00 green: 1.00 blue: 1.00 alpha: 1.0] retain];
+        _colorTable[0][8] = [[NSColor colorWithCalibratedRed: 0.75 green: 0.75 blue: 0.75 alpha: 1.0] retain];
+        _colorTable[1][8] = [[NSColor colorWithCalibratedRed: 1.00 green: 1.00 blue: 1.00 alpha: 1.0] retain];
 
         _bgColorIndex = 9;
         _fgColorIndex = 7;
@@ -358,7 +358,7 @@ static YLLGlobalConfig *sSharedInstance;
 #pragma mark Colors
 - (NSColor *) colorBlack { return _colorTable[0][0]; }
 - (void) setColorBlack: (NSColor *) c {
-    if (!c) c = [NSColor colorWithDeviceRed: 0.00 green: 0.00 blue: 0.00 alpha: 1.0];
+    if (!c) c = [NSColor colorWithCalibratedRed: 0.00 green: 0.00 blue: 0.00 alpha: 1.0];
     if (c != _colorTable[0][0]) {
         [_colorTable[0][0] release];
         _colorTable[0][0] = [[c colorUsingColorSpaceName:NSCalibratedRGBColorSpace] retain];
@@ -367,7 +367,7 @@ static YLLGlobalConfig *sSharedInstance;
 }
 - (NSColor *) colorBlackHilite { return _colorTable[1][0]; }
 - (void) setColorBlackHilite: (NSColor *) c {
-    if (!c) c = [NSColor colorWithDeviceRed: 0.25 green: 0.25 blue: 0.25 alpha: 1.0];
+    if (!c) c = [NSColor colorWithCalibratedRed: 0.25 green: 0.25 blue: 0.25 alpha: 1.0];
     if (c != _colorTable[1][0]) {
         [_colorTable[1][0] release];
         _colorTable[1][0] = [[c colorUsingColorSpaceName:NSCalibratedRGBColorSpace] retain];
@@ -377,7 +377,7 @@ static YLLGlobalConfig *sSharedInstance;
 
 - (NSColor *) colorRed { return _colorTable[0][1]; }
 - (void) setColorRed: (NSColor *) c {
-    if (!c) c = [NSColor colorWithDeviceRed: 0.50 green: 0.00 blue: 0.00 alpha: 1.0];
+    if (!c) c = [NSColor colorWithCalibratedRed: 0.50 green: 0.00 blue: 0.00 alpha: 1.0];
     if (c != _colorTable[0][1]) {
         [_colorTable[0][1] release];
         _colorTable[0][1] = [[c colorUsingColorSpaceName:NSCalibratedRGBColorSpace] retain];
@@ -386,7 +386,7 @@ static YLLGlobalConfig *sSharedInstance;
 }
 - (NSColor *) colorRedHilite { return _colorTable[1][1]; }
 - (void) setColorRedHilite: (NSColor *) c {
-    if (!c) c = [NSColor colorWithDeviceRed: 1.00 green: 0.00 blue: 0.00 alpha: 1.0];
+    if (!c) c = [NSColor colorWithCalibratedRed: 1.00 green: 0.00 blue: 0.00 alpha: 1.0];
     if (c != _colorTable[1][1]) {
         [_colorTable[1][1] release];
         _colorTable[1][1] = [[c colorUsingColorSpaceName:NSCalibratedRGBColorSpace] retain];
@@ -396,7 +396,7 @@ static YLLGlobalConfig *sSharedInstance;
 
 - (NSColor *) colorGreen { return _colorTable[0][2]; }
 - (void) setColorGreen: (NSColor *) c {
-    if (!c) c = [NSColor colorWithDeviceRed: 0.00 green: 0.50 blue: 0.00 alpha: 1.0];
+    if (!c) c = [NSColor colorWithCalibratedRed: 0.00 green: 0.50 blue: 0.00 alpha: 1.0];
     if (c != _colorTable[0][2]) {
         [_colorTable[0][2] release];
         _colorTable[0][2] = [[c colorUsingColorSpaceName:NSCalibratedRGBColorSpace] retain];
@@ -405,7 +405,7 @@ static YLLGlobalConfig *sSharedInstance;
 }
 - (NSColor *) colorGreenHilite { return _colorTable[1][2]; }
 - (void) setColorGreenHilite: (NSColor *) c {
-    if (!c) c = [NSColor colorWithDeviceRed: 0.00 green: 1.00 blue: 0.00 alpha: 1.0];
+    if (!c) c = [NSColor colorWithCalibratedRed: 0.00 green: 1.00 blue: 0.00 alpha: 1.0];
     if (c != _colorTable[1][2]) {
         [_colorTable[1][2] release];
         _colorTable[1][2] = [[c colorUsingColorSpaceName:NSCalibratedRGBColorSpace] retain];
@@ -415,7 +415,7 @@ static YLLGlobalConfig *sSharedInstance;
 
 - (NSColor *) colorYellow { return _colorTable[0][3]; }
 - (void) setColorYellow: (NSColor *) c {
-    if (!c) c = [NSColor colorWithDeviceRed: 0.50 green: 0.50 blue: 0.00 alpha: 1.0];
+    if (!c) c = [NSColor colorWithCalibratedRed: 0.50 green: 0.50 blue: 0.00 alpha: 1.0];
     if (c != _colorTable[0][3]) {
         [_colorTable[0][3] release];
         _colorTable[0][3] = [[c colorUsingColorSpaceName:NSCalibratedRGBColorSpace] retain];
@@ -424,7 +424,7 @@ static YLLGlobalConfig *sSharedInstance;
 }
 - (NSColor *) colorYellowHilite { return _colorTable[1][3]; }
 - (void) setColorYellowHilite: (NSColor *) c {
-    if (!c) c = [NSColor colorWithDeviceRed: 1.00 green: 1.00 blue: 0.00 alpha: 1.0];
+    if (!c) c = [NSColor colorWithCalibratedRed: 1.00 green: 1.00 blue: 0.00 alpha: 1.0];
     if (c != _colorTable[1][3]) {
         [_colorTable[1][3] release];
         _colorTable[1][3] = [[c colorUsingColorSpaceName:NSCalibratedRGBColorSpace] retain];
@@ -434,7 +434,7 @@ static YLLGlobalConfig *sSharedInstance;
 
 - (NSColor *) colorBlue { return _colorTable[0][4]; }
 - (void) setColorBlue: (NSColor *) c {
-    if (!c) c = [NSColor colorWithDeviceRed: 0.00 green: 0.00 blue: 0.50 alpha: 1.0];
+    if (!c) c = [NSColor colorWithCalibratedRed: 0.00 green: 0.00 blue: 0.50 alpha: 1.0];
     if (c != _colorTable[0][4]) {
         [_colorTable[0][4] release];
         _colorTable[0][4] = [[c colorUsingColorSpaceName:NSCalibratedRGBColorSpace] retain];
@@ -443,7 +443,7 @@ static YLLGlobalConfig *sSharedInstance;
 }
 - (NSColor *) colorBlueHilite { return _colorTable[1][4]; }
 - (void) setColorBlueHilite: (NSColor *) c {
-    if (!c) c = [NSColor colorWithDeviceRed: 0.00 green: 0.00 blue: 1.00 alpha: 1.0];
+    if (!c) c = [NSColor colorWithCalibratedRed: 0.00 green: 0.00 blue: 1.00 alpha: 1.0];
     if (c != _colorTable[1][4]) {
         [_colorTable[1][4] release];
         _colorTable[1][4] = [[c colorUsingColorSpaceName:NSCalibratedRGBColorSpace] retain];
@@ -453,7 +453,7 @@ static YLLGlobalConfig *sSharedInstance;
 
 - (NSColor *) colorMagenta { return _colorTable[0][5]; }
 - (void) setColorMagenta: (NSColor *) c {
-    if (!c) c = [NSColor colorWithDeviceRed: 0.50 green: 0.00 blue: 0.50 alpha: 1.0];
+    if (!c) c = [NSColor colorWithCalibratedRed: 0.50 green: 0.00 blue: 0.50 alpha: 1.0];
     if (c != _colorTable[0][5]) {
         [_colorTable[0][5] release];
         _colorTable[0][5] = [[c colorUsingColorSpaceName:NSCalibratedRGBColorSpace] retain];
@@ -462,7 +462,7 @@ static YLLGlobalConfig *sSharedInstance;
 }
 - (NSColor *) colorMagentaHilite { return _colorTable[1][5]; }
 - (void) setColorMagentaHilite: (NSColor *) c {
-    if (!c) c = [NSColor colorWithDeviceRed: 1.00 green: 0.00 blue: 1.00 alpha: 1.0];
+    if (!c) c = [NSColor colorWithCalibratedRed: 1.00 green: 0.00 blue: 1.00 alpha: 1.0];
     if (c != _colorTable[1][5]) {
         [_colorTable[1][5] release];
         _colorTable[1][5] = [[c colorUsingColorSpaceName:NSCalibratedRGBColorSpace] retain];
@@ -472,7 +472,7 @@ static YLLGlobalConfig *sSharedInstance;
 
 - (NSColor *) colorCyan { return _colorTable[0][6]; }
 - (void) setColorCyan: (NSColor *) c {
-    if (!c) c = [NSColor colorWithDeviceRed: 0.00 green: 0.50 blue: 0.50 alpha: 1.0];
+    if (!c) c = [NSColor colorWithCalibratedRed: 0.00 green: 0.50 blue: 0.50 alpha: 1.0];
     if (c != _colorTable[0][6]) {
         [_colorTable[0][6] release];
         _colorTable[0][6] = [[c colorUsingColorSpaceName:NSCalibratedRGBColorSpace] retain];
@@ -481,7 +481,7 @@ static YLLGlobalConfig *sSharedInstance;
 }
 - (NSColor *) colorCyanHilite { return _colorTable[1][6]; }
 - (void) setColorCyanHilite: (NSColor *) c {
-    if (!c) c = [NSColor colorWithDeviceRed: 0.00 green: 1.00 blue: 1.00 alpha: 1.0];
+    if (!c) c = [NSColor colorWithCalibratedRed: 0.00 green: 1.00 blue: 1.00 alpha: 1.0];
     if (c != _colorTable[1][6]) {
         [_colorTable[1][6] release];
         _colorTable[1][6] = [[c colorUsingColorSpaceName:NSCalibratedRGBColorSpace] retain];
@@ -491,7 +491,7 @@ static YLLGlobalConfig *sSharedInstance;
 
 - (NSColor *) colorWhite { return _colorTable[0][7]; }
 - (void) setColorWhite: (NSColor *) c {
-    if (!c) c = [NSColor colorWithDeviceRed: 0.50 green: 0.50 blue: 0.50 alpha: 1.0];
+    if (!c) c = [NSColor colorWithCalibratedRed: 0.50 green: 0.50 blue: 0.50 alpha: 1.0];
     if (c != _colorTable[0][7]) {
         [_colorTable[0][7] release];
         _colorTable[0][7] = [[c colorUsingColorSpaceName:NSCalibratedRGBColorSpace] retain];
@@ -500,7 +500,7 @@ static YLLGlobalConfig *sSharedInstance;
 }
 - (NSColor *) colorWhiteHilite { return _colorTable[1][7]; }
 - (void) setColorWhiteHilite: (NSColor *) c {
-    if (!c) c = [NSColor colorWithDeviceRed: 1.00 green: 1.00 blue: 1.00 alpha: 1.0];
+    if (!c) c = [NSColor colorWithCalibratedRed: 1.00 green: 1.00 blue: 1.00 alpha: 1.0];
     if (c != _colorTable[1][7]) {
         [_colorTable[1][7] release];
         _colorTable[1][7] = [[c colorUsingColorSpaceName:NSCalibratedRGBColorSpace] retain];
@@ -510,7 +510,7 @@ static YLLGlobalConfig *sSharedInstance;
 
 - (NSColor *) colorBG { return _colorTable[0][9]; }
 - (void) setColorBG: (NSColor *) c {
-    if (!c) c = [NSColor colorWithDeviceRed: 0.00 green: 0.00 blue: 0.00 alpha: 1.0];
+    if (!c) c = [NSColor colorWithCalibratedRed: 0.00 green: 0.00 blue: 0.00 alpha: 1.0];
     if (c != _colorTable[0][9]) {
         [_colorTable[0][9] release];
         _colorTable[0][9] = [[c colorUsingColorSpaceName:NSCalibratedRGBColorSpace] retain];
@@ -520,7 +520,7 @@ static YLLGlobalConfig *sSharedInstance;
 }
 - (NSColor *) colorBGHilite { return _colorTable[1][9]; }
 - (void) setColorBGHilite: (NSColor *) c {
-    if (!c) c = [NSColor colorWithDeviceRed: 0.00 green: 0.00 blue: 0.00 alpha: 1.0];
+    if (!c) c = [NSColor colorWithCalibratedRed: 0.00 green: 0.00 blue: 0.00 alpha: 1.0];
     if (c != _colorTable[1][9]) {
         [_colorTable[1][9] release];
         _colorTable[1][9] = [[c colorUsingColorSpaceName:NSCalibratedRGBColorSpace] retain];
