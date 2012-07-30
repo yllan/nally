@@ -1508,7 +1508,7 @@ BOOL isSpecialSymbol(unichar ch)
             len += 4;
         [[self frontMostConnection] sendBytes: ch length: len];
     } else {
-        NSLog(@"Unprocessed selector: %s", aSelector);
+        NSLog(@"Unprocessed selector: %@", NSStringFromSelector(aSelector));
     }
 }
 
@@ -1573,7 +1573,7 @@ BOOL isSpecialSymbol(unichar ch)
  */
 - (NSAttributedString *) attributedSubstringFromRange: (NSRange)theRange
 {
-	if (theRange.location < 0 || theRange.location >= [_markedText length]) return nil;
+	if (theRange.location >= [_markedText length]) return nil;
 	if (theRange.location + theRange.length > [_markedText length]) 
 		theRange.length = [_markedText length] - theRange.location;
 	return [[[NSAttributedString alloc] initWithString: [[_markedText string] substringWithRange: theRange]] autorelease];
