@@ -202,6 +202,7 @@ BOOL isSpecialSymbol(unichar ch)
         [self configure];
         _selectionLength = 0;
         _selectionLocation = 0;
+        [self setTabViewType: NSNoTabsNoBorder];
     }
     return self;
 }
