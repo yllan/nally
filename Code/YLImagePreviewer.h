@@ -19,6 +19,7 @@
     NSPanel         *_window;
 }
 
+- (id) initWithURL: (NSURL *)url;
 - (void) showLoadingWindow;
 - (void) releaseConnection;
 - (NSMutableData *) receivedData;

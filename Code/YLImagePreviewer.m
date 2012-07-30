@@ -58,7 +58,7 @@
 
 @implementation YLImagePreviewer
 
-- (id) initWithURL: (NSURL *) url
+- (id) initWithURL: (NSURL *)url
 {
     if ([super init])
     {
