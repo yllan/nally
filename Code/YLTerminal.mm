@@ -163,8 +163,8 @@ if (_cursorX <= _column - 1) { \
             } else if (c == ASC_ENQ) { // FLOW CONTROL? do nothing
                 unsigned char cmd[1];
                 unsigned int cmdLength = 1;
-                cmd[1] = ASC_NUL;
-                [[self connection] sendBytes:cmd length:cmdLength];
+                cmd[0] = ASC_NUL;
+                [[self connection] sendBytes: cmd length: cmdLength];
             } else if (c == ASC_ACK) { // FLOW CONTROL? do nothing
             } else if (c == ASC_BEL) { // BEEP
                 [[NSSound soundNamed: @"Whit.aiff"] play];
@@ -773,7 +773,7 @@ if (_cursorX <= _column - 1) { \
 								}
 							}
 						} else if (p == 20) { // set line feed mode
-							_modeLNM == YES;
+							_modeLNM = YES;
                         } else if (p == 4) {
                             // selects replace mode and turns INSERT off. New
                             // display characters replace old display characters
