@@ -336,7 +336,7 @@ static YLLGlobalConfig *sSharedInstance;
 
 - (NSString *)chineseFontName { return [[_chineseFontName retain] autorelease]; }
 - (void)setChineseFontName:(NSString *)value {
-    if (!value) value = @"STHeiti";
+    if (!value) value = @"HiraKakuPro-W3";
     if (_chineseFontName != value) {
         [_chineseFontName release];
         _chineseFontName = [value copy];
