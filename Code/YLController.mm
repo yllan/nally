@@ -664,15 +664,16 @@
             hasConnectedConnetion = YES;
     }
     if (!hasConnectedConnetion) return YES;
-    NSBeginAlertSheet(NSLocalizedString(@"Are you sure you want to quit Nally?", @"Sheet Title"), 
+    
+    NSString *errorMessage = [NSString stringWithFormat: NSLocalizedString(@"There are %d tabs open in Nally. Do you want to quit anyway?", @"Sheet Message"), tabNumber];
+    NSBeginAlertSheet(NSLocalizedString(@"Are you sure you want to quit Nally?", @"Sheet Title"),
                       NSLocalizedString(@"Quit", @"Default Button"), 
                       NSLocalizedString(@"Cancel", @"Cancel Button"), 
                       nil, 
                       _mainWindow, self, 
                       @selector(confirmSheetDidEnd:returnCode:contextInfo:), 
                       @selector(confirmSheetDidDismiss:returnCode:contextInfo:), nil, 
-                      [NSString stringWithFormat: NSLocalizedString(@"There are %d tabs open in Nally. Do you want to quit anyway?", @"Sheet Message"),
-                                tabNumber]);
+                      @"%@", errorMessage);
     return NSTerminateLater;
 }
 
@@ -732,7 +733,7 @@
 - (void) confirmTabSheetDidEnd: (NSWindow *)sheet returnCode: (int)returnCode contextInfo: (void  *)contextInfo
 {
     if (returnCode == NSAlertDefaultReturn) {
-        [[[(id)contextInfo identifier] terminal] setHasMessage: NO];
+        [[(YLConnection *)[(id)contextInfo identifier] terminal] setHasMessage: NO];
         [_telnetView removeTabViewItem: (id)contextInfo];
     }
 }
