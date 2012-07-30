@@ -75,9 +75,8 @@
         imageFile = @"HUDSaveActive";
     NSImage *img = [[NSImage alloc] initWithContentsOfFile: [[NSBundle mainBundle] pathForResource: imageFile 
                                                                                             ofType: @"tiff"]];
-    [img compositeToPoint: NSMakePoint((rect.size.width - [img size].width) / 2, 
-                                       (rect.size.height - [img size].height) / 2)
-                operation: NSCompositeCopy];
+    [img drawAtPoint: NSMakePoint((rect.size.width - [img size].width) / 2, (rect.size.height - [img size].height) / 2)
+            fromRect: NSZeroRect operation: NSCompositeCopy fraction: 1.0];
     [img release];
 }
 

@@ -783,9 +783,7 @@ BOOL isSpecialSymbol(unichar ch)
         /* Draw the backed image */
 		NSRect imgRect = rect;
 		imgRect.origin.y = (_fontHeight * gRow) - rect.origin.y - rect.size.height;
-		[_backedImage compositeToPoint: rect.origin
-							  fromRect: rect
-							 operation: NSCompositeCopy];
+		[_backedImage drawAtPoint: rect.origin fromRect: rect operation: NSCompositeCopy fraction: 1.0];
 
         [self drawBlink];
         
@@ -891,9 +889,10 @@ BOOL isSpecialSymbol(unichar ch)
 {
     NSAutoreleasePool *pool = [NSAutoreleasePool new];
 	[_backedImage lockFocus];
-	[_backedImage compositeToPoint: NSMakePoint(0, (gRow - end) * _fontHeight) 
-						  fromRect: NSMakeRect(0, (gRow - end - 1) * _fontHeight, gColumn * _fontWidth, (end - start) * _fontHeight) 
-						 operation: NSCompositeCopy];
+	[_backedImage drawAtPoint: NSMakePoint(0, (gRow - end) * _fontHeight)
+                     fromRect: NSMakeRect(0, (gRow - end - 1) * _fontHeight, gColumn * _fontWidth, (end - start) * _fontHeight)
+                    operation: NSCompositeCopy
+                     fraction: 1.0];
 
 	[gConfig->_colorTable[0][gConfig->_bgColorIndex] set];
 	NSRectFill(NSMakeRect(0, (gRow - end - 1) * _fontHeight, gColumn * _fontWidth, _fontHeight));
@@ -913,9 +912,10 @@ BOOL isSpecialSymbol(unichar ch)
 {
     NSAutoreleasePool *pool = [NSAutoreleasePool new];
     [_backedImage lockFocus];
-	[_backedImage compositeToPoint: NSMakePoint(0, (gRow - end - 1) * _fontHeight) 
-						  fromRect: NSMakeRect(0, (gRow - end) * _fontHeight, gColumn * _fontWidth, (end - start) * _fontHeight) 
-						 operation: NSCompositeCopy];
+	[_backedImage drawAtPoint: NSMakePoint(0, (gRow - end - 1) * _fontHeight)
+                     fromRect: NSMakeRect(0, (gRow - end) * _fontHeight, gColumn * _fontWidth, (end - start) * _fontHeight)
+                    operation: NSCompositeCopy
+                     fraction: 1.0];
 	
 	[gConfig->_colorTable[0][gConfig->_bgColorIndex] set];
 	NSRectFill(NSMakeRect(0, (gRow - start - 1) * _fontHeight, gColumn * _fontWidth, _fontHeight));
