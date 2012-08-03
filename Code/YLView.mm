@@ -622,13 +622,13 @@ BOOL isSpecialSymbol(unichar ch)
                                                           column: (index % gColumn)];
         if (url && !([e modifierFlags] & NSCommandKeyMask))
         {
-            _shouldOpenUrlInBackground = [e modifierFlags] & NSAlternateKeyMask;
+            _shouldOpenUrlInBackground = (([e modifierFlags] & NSAlternateKeyMask) == NSAlternateKeyMask) ? YES : NO;
             _shouldUseImagePreviewer = [gConfig shouldPreferImagePreviewer];
             if ([e modifierFlags] & NSShiftKeyMask)
                 _shouldUseImagePreviewer = !_shouldUseImagePreviewer;
             
             // Try to revert shortened URLs
-            if ([url length] < 25 && [url hasPrefix:@"http://"])  // FIXME: Need a better way to identify short URLs
+            if ([url length] < 25 && [url hasPrefix: @"http://"])  // FIXME: Need a better way to identify short URLs
             {
                 [NSURLConnection connectionWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]
                                               delegate:self];
