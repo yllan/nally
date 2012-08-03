@@ -22,7 +22,7 @@ static YLContextualMenuManager *gSharedInstance;
     int i;
     for (i = 0; i < [s length]; i++) {
         unichar c = [s characterAtIndex: i];
-        if (('0' <= c && c <= '9') || ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z'))
+        if (c >= '!' && c <= '~')
             [result appendString: [NSString stringWithCharacters: &c length: 1]];
     }
     return result;
@@ -94,7 +94,7 @@ static YLContextualMenuManager *gSharedInstance;
 - (NSArray *) availableMenuItemForSelectionString: (NSString *)selectedString
 {
     NSMutableArray *items = [NSMutableArray array];
-    NSMenuItem *item;
+    __block NSMenuItem *item;
     NSString *shortURL = [self _extractShortURLFromString: selectedString];
     NSString *longURL = [self _extractLongURLFromString: selectedString];
     
@@ -134,15 +134,41 @@ static YLContextualMenuManager *gSharedInstance;
             [items addObject: item];
         }
     }
+
+    BOOL (^isAllDigit)(NSString *) = ^(NSString *s) {
+        NSCharacterSet* nonNumbers = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
+        NSRange r = [s rangeOfCharacterFromSet: nonNumbers];
+        return (BOOL)(r.location == NSNotFound);
+    };
+    // I know this should be done with regex, but it's available in 10.7+ only.
     
-    if ([shortURL length] > 0 && [shortURL length] < 8) {
-        item = [[[NSMenuItem alloc] initWithTitle: [@"0rz.tw/" stringByAppendingString: shortURL] action: @selector(openURL:) keyEquivalent: @""] autorelease];
+    void (^addShortenedURLMenuItem)(NSString *title, NSString *actualURLString) = ^(NSString *title, NSString *actualURLString) {
+        [_urlsToOpen release];
+        _urlsToOpen = [@[actualURLString] copy];
+        
+        item = [[[NSMenuItem alloc] initWithTitle: title action: @selector(openURL:) keyEquivalent: @""] autorelease];
         [item setTarget: self];
         [items addObject: item];
+    };
     
-        item = [[[NSMenuItem alloc] initWithTitle: [@"tinyurl.com/" stringByAppendingString: shortURL] action: @selector(openURL:) keyEquivalent: @""] autorelease];
-        [item setTarget: self];
-        [items addObject: item];
+    if ([shortURL hasPrefix: @"sm"] && [shortURL length] <= 10 && isAllDigit([shortURL substringFromIndex: 2])) {
+        addShortenedURLMenuItem([@"NicoNico/" stringByAppendingString: shortURL],
+                                [@"http://www.nicovideo.jp/watch/" stringByAppendingString: shortURL]);
+    } else if ([shortURL hasPrefix: @"id="] && [shortURL length] <= 12 && isAllDigit([shortURL substringFromIndex: 3])) {
+        addShortenedURLMenuItem([@"pixiv_illust/" stringByAppendingString: shortURL],
+                                [@"http://www.pixiv.net/member_illust.php?mode=medium&illust_" stringByAppendingString: shortURL]);
+    } else if ([shortURL hasPrefix: @"mid="] && [shortURL length] <= 12 && isAllDigit([shortURL substringFromIndex: 4])) {
+        addShortenedURLMenuItem([@"pixiv_member/" stringByAppendingString: [shortURL substringFromIndex: 4]],
+                                [@"http://www.pixiv.net/member.php?id=" stringByAppendingString: [shortURL substringFromIndex: 4]]);
+    } else if ([shortURL length] == 4) {
+        addShortenedURLMenuItem([@"ppt.cc/" stringByAppendingString: shortURL],
+                                [@"http://ppt.cc/" stringByAppendingString: shortURL]);
+    } else if ([shortURL length] == 5) {
+        addShortenedURLMenuItem([@"0rz.tw/" stringByAppendingString: shortURL],
+                                [@"http://0rz.tw/" stringByAppendingString: shortURL]);
+    } else if ([shortURL length] == 6 || [shortURL length] == 7) {
+        addShortenedURLMenuItem([@"tinyurl.com/" stringByAppendingString: shortURL],
+                                [@"http://tinyurl.com/" stringByAppendingString: shortURL]);
     }
     
     if ([selectedString length] > 0) {
