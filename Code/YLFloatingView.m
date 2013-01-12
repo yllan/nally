@@ -91,11 +91,10 @@
     NSSavePanel *panel = [NSSavePanel savePanel];
     YLImagePreviewer *previewer = [(YLImageView *)[self superview] previewer];
 
-    if ([panel runModalForDirectory: nil 
-                               file: [previewer filename]] == NSFileHandlingPanelOKButton)
+    [panel setNameFieldStringValue:[previewer filename]];
+    if ([panel runModal] == NSFileHandlingPanelOKButton)
     {
-        /* BOOL ret = */ [[previewer receivedData] writeToFile: [panel filename] 
-                                                    atomically: YES];
+        /* BOOL ret = */ [[previewer receivedData] writeToFile:[[panel URL] path] atomically:YES];
         // NSLog(@"save as %@: %s", [panel filename], ret == YES ? "done" : "failed");
     }
     
