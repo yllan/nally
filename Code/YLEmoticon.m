@@ -19,11 +19,6 @@
     return [e autorelease];    
 }
 
-//+ (void) initialize 
-//{
-//    [self setKeys: [NSArray arrayWithObjects: @"content", nil] triggerChangeNotificationsForDependentKey: @"description"];
-//}
-
 + (NSSet *) keyPathsForValuesAffectingDescription
 {
 	return [NSSet setWithObjects: @"content", nil];
