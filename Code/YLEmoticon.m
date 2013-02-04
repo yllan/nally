@@ -19,9 +19,9 @@
     return [e autorelease];    
 }
 
-+ (void) initialize 
++ (NSSet *) keyPathsForValuesAffectingDescription
 {
-    [self setKeys: [NSArray arrayWithObjects: @"content", nil] triggerChangeNotificationsForDependentKey: @"description"];
+	return [NSSet setWithObjects: @"content", nil];
 }
 
 - (NSDictionary *) dictionaryOfEmoticon
