@@ -60,7 +60,7 @@ void dump_packet(unsigned char *s, int length)
     int port = [[d valueForKey: @"port"] intValue];
     NSHost *host = [NSHost hostWithName: addr];
 
-    if (host) {
+    if (host && [host address]) {
         NSDictionary *dict = [NSDictionary dictionaryWithObjectsAndKeys: host, @"host", [NSNumber numberWithInt: port], @"port", nil];
         [self performSelectorOnMainThread: @selector(connectWithDictionary:) withObject: dict waitUntilDone: NO];
     } else {
