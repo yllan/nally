@@ -1520,6 +1520,8 @@ BOOL isSpecialSymbol(unichar ch)
 - (void) setMarkedText: (id)aString selectedRange: (NSRange)selRange
 {
     YLTerminal *ds = [self frontMostTerminal];
+    if (!ds) return;
+
 	if (![aString respondsToSelector: @selector(isEqualToAttributedString:)] && [aString isMemberOfClass: [NSString class]])
 		aString = [[[NSAttributedString alloc] initWithString: aString] autorelease];
 
