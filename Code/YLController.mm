@@ -12,7 +12,7 @@
 #import "YLLGlobalConfig.h"
 #import "DBPrefsWindowController.h"
 #import "YLEmoticon.h"
-
+#import "SSKeychain.h"
 @interface NSWindow (YLAdditions)
 - (void) _setContentHasShadow: (BOOL)hasShadow;
 @end
@@ -211,15 +211,39 @@
 - (void) loadSites
 {
     NSArray *dictionaries = [[NSUserDefaults standardUserDefaults] arrayForKey: @"Sites"];
-    for (NSDictionary *siteDictionay in dictionaries) 
-        [self insertObject: [YLSite siteWithDictionary: siteDictionay] inSitesAtIndex: [self countOfSites]];    
+    for (NSDictionary *siteDictionay in dictionaries){
+        NSString *address =  [siteDictionay objectForKey:@"address"];
+        if ( address )
+        {
+            NSString *account = [[[SSKeychain accountsForService:address]lastObject] objectForKey:@"acct"];
+            NSString *password = [SSKeychain passwordForService:address account:account];
+            if ( account && password )
+            {
+                /* set account and password back to siteDict */
+                NSLog(@"%@,%@",account,password);
+                [siteDictionay setValue:account forKey:@"account"];
+                [siteDictionay setValue:password forKey:@"password"];
+            }
+        }
+        [self insertObject: [YLSite siteWithDictionary: siteDictionay] inSitesAtIndex: [self countOfSites]];
+    }
 }
 
 - (void) saveSites
 {
     NSMutableArray *dictionaries = [NSMutableArray array];
-    for (YLSite *site in _sites) 
+    for (YLSite *site in _sites) {
         [dictionaries addObject: [site dictionaryOfSite]];
+        /* store account and password in keychain*/
+        if ( site.password && site.address)
+        {
+            NSError *error = nil;
+            [SSKeychain setPassword:site.password forService:site.address account:site.account error:&error];
+            if ( error != nil){
+                NSLog(@"keychain error reason:%@",[error localizedDescription]);
+            }
+        }
+    }
     [[NSUserDefaults standardUserDefaults] setObject: dictionaries forKey: @"Sites"];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [self updateSitesMenu];
@@ -458,7 +482,11 @@
         [_sitesWindow makeFirstResponder: _siteNameField];
 }
 
-
+- (IBAction)autoLogin:(id)sender
+{
+    YLSite *site = [[[[_telnetView frontMostConnection] site] copy] autorelease];
+    
+}
 
 - (IBAction) showHiddenText: (id)sender
 {

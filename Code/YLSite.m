@@ -32,6 +32,10 @@
     YLSite *s = [[[YLSite alloc] init] autorelease];
     [s setName: [dict valueForKey: @"name"] ?: @""];
     [s setAddress: [dict valueForKey: @"address"] ?: @""];
+    [s setAccount: [dict valueForKey: @"account"] ?: @""];
+    [s setPassword: [dict valueForKey: @"password"] ?: @""];
+
+    
     [s setEncoding: (YLEncoding)[[dict valueForKey: @"encoding"] unsignedShortValue]];
     [s setAnsiColorKey: (YLANSIColorKey)[[dict valueForKey: @"ansicolorkey"] unsignedShortValue]];
     [s setDetectDoubleByte: [[dict valueForKey: @"detectdoublebyte"] boolValue]];

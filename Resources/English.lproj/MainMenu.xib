@@ -190,7 +190,7 @@
                     <toolbarItem implicitItemIdentifier="4FB0C03D-5E64-4A41-9E1D-285A43B57BB5" label="Login" paletteLabel="Login" id="szN-5x-6U7">
                         <nil key="toolTip"/>
                         <size key="minSize" width="30" height="25"/>
-                        <size key="maxSize" width="116" height="25"/>
+                        <size key="maxSize" width="31" height="25"/>
                         <button key="view" verticalHuggingPriority="750" id="XJX-cx-kg4">
                             <rect key="frame" x="4" y="14" width="30" height="25"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
