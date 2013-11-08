@@ -62,6 +62,10 @@
 		85F7F2090B06EE36000C4CDF /* YLLGlobalConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 85F7F2080B06EE36000C4CDF /* YLLGlobalConfig.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		8DCEE149182CDF24008A9259 /* SSKeychain.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8DCEE143182CDF24008A9259 /* SSKeychain.strings */; };
+		8DCEE14A182CDF24008A9259 /* SSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DCEE146182CDF24008A9259 /* SSKeychain.m */; };
+		8DCEE14B182CDF24008A9259 /* SSKeychainQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DCEE148182CDF24008A9259 /* SSKeychainQuery.m */; };
+		8DCEE14D182CDF3D008A9259 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DCEE14C182CDF3D008A9259 /* Security.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -163,6 +167,12 @@
 		85F7F2070B06EE36000C4CDF /* YLLGlobalConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLLGlobalConfig.h; sourceTree = "<group>"; };
 		85F7F2080B06EE36000C4CDF /* YLLGlobalConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLLGlobalConfig.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8DCEE144182CDF24008A9259 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SSKeychain.strings; sourceTree = "<group>"; };
+		8DCEE145182CDF24008A9259 /* SSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychain.h; sourceTree = "<group>"; };
+		8DCEE146182CDF24008A9259 /* SSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychain.m; sourceTree = "<group>"; };
+		8DCEE147182CDF24008A9259 /* SSKeychainQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSKeychainQuery.h; sourceTree = "<group>"; };
+		8DCEE148182CDF24008A9259 /* SSKeychainQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSKeychainQuery.m; sourceTree = "<group>"; };
+		8DCEE14C182CDF3D008A9259 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +187,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DCEE14D182CDF3D008A9259 /* Security.framework in Frameworks */,
 				85AF025F1291300F00728C12 /* HMBlkAppKit.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				850711AB0CA7A347005F4734 /* ApplicationServices.framework in Frameworks */,
@@ -295,6 +306,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8DCEE14C182CDF3D008A9259 /* Security.framework */,
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
@@ -326,6 +338,7 @@
 		85AF0121129129E400728C12 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
+				8DCEE142182CDF24008A9259 /* SSKeychain */,
 				85AF012212912A3300728C12 /* DBPrefsWindowController.h */,
 				85AF012312912A3300728C12 /* DBPrefsWindowController.m */,
 			);
@@ -385,6 +398,18 @@
 				8540FBF812AB5AFB000FE1D6 /* Text Suite */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		8DCEE142182CDF24008A9259 /* SSKeychain */ = {
+			isa = PBXGroup;
+			children = (
+				8DCEE143182CDF24008A9259 /* SSKeychain.strings */,
+				8DCEE145182CDF24008A9259 /* SSKeychain.h */,
+				8DCEE146182CDF24008A9259 /* SSKeychain.m */,
+				8DCEE147182CDF24008A9259 /* SSKeychainQuery.h */,
+				8DCEE148182CDF24008A9259 /* SSKeychainQuery.m */,
+			);
+			path = SSKeychain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -447,6 +472,7 @@
 				German,
 				zh_TW,
 				zh_CN,
+				en,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* MacBlueTelnet */;
 			projectDirPath = "";
@@ -486,6 +512,7 @@
 				85AF012B12912AD000728C12 /* nally.public.pem in Resources */,
 				85B0176212913B30004F06E4 /* Preferences.xib in Resources */,
 				85B0176E12913CA5004F06E4 /* MainMenu.xib in Resources */,
+				8DCEE149182CDF24008A9259 /* SSKeychain.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,10 +571,12 @@
 				85145AAE0AB40192009FC710 /* YLTerminal.mm in Sources */,
 				85F7F2090B06EE36000C4CDF /* YLLGlobalConfig.m in Sources */,
 				856CDB260C9650550025C754 /* encoding.m in Sources */,
+				8DCEE14A182CDF24008A9259 /* SSKeychain.m in Sources */,
 				85ABEB810C966FEF008227D6 /* YLController.mm in Sources */,
 				858A54E60CAE78C8000E1AA7 /* YLMarkedTextView.m in Sources */,
 				85899C7B0CEED4E40031907F /* YLApplication.mm in Sources */,
 				8579CA2A0CF21D3D005A8353 /* YLSite.m in Sources */,
+				8DCEE14B182CDF24008A9259 /* SSKeychainQuery.m in Sources */,
 				859252F50CFD4F860054E3D6 /* YLContextualMenuManager.m in Sources */,
 				85E7825C0D057E8400BDA3FB /* YLEmoticon.m in Sources */,
 				85ED52290D0920E6003296D4 /* CommonType.m in Sources */,
@@ -606,6 +635,14 @@
 			);
 			name = MainMenu.xib;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		8DCEE143182CDF24008A9259 /* SSKeychain.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8DCEE144182CDF24008A9259 /* en */,
+			);
+			name = SSKeychain.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
