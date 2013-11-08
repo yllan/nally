@@ -187,6 +187,22 @@
                         </button>
                     </toolbarItem>
                     <toolbarItem implicitItemIdentifier="NSToolbarSeparatorItem" id="234"/>
+                    <toolbarItem implicitItemIdentifier="4FB0C03D-5E64-4A41-9E1D-285A43B57BB5" label="Login" paletteLabel="Login" id="szN-5x-6U7">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="30" height="25"/>
+                        <size key="maxSize" width="116" height="25"/>
+                        <button key="view" verticalHuggingPriority="750" id="XJX-cx-kg4">
+                            <rect key="frame" x="4" y="14" width="30" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="roundTextured" title="L" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wPL-3e-qHn">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                        </button>
+                        <connections>
+                            <action selector="autoLogin:" target="207" id="iPS-bX-1x5"/>
+                        </connections>
+                    </toolbarItem>
                 </allowedToolbarItems>
                 <defaultToolbarItems>
                     <toolbarItem reference="418"/>
@@ -197,6 +213,7 @@
                     <toolbarItem reference="442"/>
                     <toolbarItem reference="436"/>
                     <toolbarItem reference="415"/>
+                    <toolbarItem reference="szN-5x-6U7"/>
                 </defaultToolbarItems>
                 <connections>
                     <outlet property="delegate" destination="207" id="832"/>
@@ -914,14 +931,14 @@ Gw
                                             <rect key="frame" x="4" y="1" width="238" height="298"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <clipView key="contentView" id="00G-fG-OG0">
-                                                <rect key="frame" x="1" y="1" width="236" height="296"/>
+                                                <rect key="frame" x="1" y="1" width="221" height="296"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <subviews>
                                                     <textView importsGraphics="NO" richText="NO" continuousSpellChecking="YES" verticallyResizable="YES" spellingCorrection="YES" id="780">
-                                                        <rect key="frame" x="0.0" y="0.0" width="236" height="357"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="221" height="374"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <size key="minSize" width="236" height="296"/>
+                                                        <size key="minSize" width="221" height="296"/>
                                                         <size key="maxSize" width="459" height="10000000"/>
                                                         <attributedString key="textStorage">
                                                             <fragment>
@@ -968,7 +985,7 @@ Gw
                                                             </fragment>
                                                         </attributedString>
                                                         <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <size key="minSize" width="236" height="296"/>
+                                                        <size key="minSize" width="221" height="296"/>
                                                         <size key="maxSize" width="459" height="10000000"/>
                                                         <connections>
                                                             <binding destination="764" name="value" keyPath="selection.content" id="782"/>
@@ -982,7 +999,7 @@ Gw
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
                                             <scroller key="verticalScroller" verticalHuggingPriority="750" id="778">
-                                                <rect key="frame" x="221" y="1" width="16" height="296"/>
+                                                <rect key="frame" x="222" y="1" width="15" height="296"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                             </scroller>
                                         </scrollView>
