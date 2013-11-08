@@ -45,7 +45,6 @@
             [NSNumber numberWithUnsignedShort: [self ansiColorKey]], @"ansicolorkey", 
             [NSNumber numberWithBool: [self detectDoubleByte]], @"detectdoublebyte", nil];
 }
-
 @synthesize name = _name;
 @synthesize address = _address;
 @synthesize encoding = _encoding;
