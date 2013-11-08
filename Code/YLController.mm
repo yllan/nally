@@ -486,6 +486,14 @@
 {
     YLSite *site = [[[[_telnetView frontMostConnection] site] copy] autorelease];
     
+    if ([[_telnetView frontMostConnection] connected]) {
+        NSString *account = site.account;
+        NSString *password = site.password;
+        if ( account && password )
+        {
+            [_telnetView insertText:[NSString stringWithFormat:@"%@\n%@\n",account,password]];
+        }
+    }
 }
 
 - (IBAction) showHiddenText: (id)sender

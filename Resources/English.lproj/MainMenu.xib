@@ -652,7 +652,7 @@ Gw
                                             </textFieldCell>
                                             <connections>
                                                 <binding destination="366" name="value" keyPath="selection.address" id="933"/>
-                                                <outlet property="nextKeyView" destination="920" id="955"/>
+                                                <outlet property="nextKeyView" destination="Jnq-23-p3e" id="bXM-bt-cTu"/>
                                             </connections>
                                         </textField>
                                         <textField verticalHuggingPriority="750" id="905">
@@ -759,6 +759,7 @@ Gw
                                             </textFieldCell>
                                             <connections>
                                                 <binding destination="366" name="value" keyPath="selection.account" id="tjz-dG-PTq"/>
+                                                <outlet property="nextKeyView" destination="ZBF-O4-vqE" id="nhd-rX-w4S"/>
                                             </connections>
                                         </textField>
                                         <textField verticalHuggingPriority="750" id="ZBF-O4-vqE" customClass="NSSecureTextField">
@@ -771,6 +772,7 @@ Gw
                                             </textFieldCell>
                                             <connections>
                                                 <binding destination="366" name="value" keyPath="selection.password" id="vKK-ac-vGI"/>
+                                                <outlet property="nextKeyView" destination="920" id="JTU-gb-gcg"/>
                                             </connections>
                                         </textField>
                                     </subviews>

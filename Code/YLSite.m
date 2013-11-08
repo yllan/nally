@@ -67,6 +67,8 @@
     [s setEncoding: [self encoding]];
     [s setAnsiColorKey: [self ansiColorKey]];
     [s setDetectDoubleByte: [self detectDoubleByte]];
+    [s setAccount:[self account]];
+    [s setPassword:[self password]];
     return s;
 }
 
