@@ -60,6 +60,7 @@
 - (IBAction) editSites: (id)sender;
 - (IBAction) closeSites: (id)sender;
 - (IBAction) addSites: (id)sender;
+- (IBAction) autoLogin: (id)sender;
 - (IBAction) showHiddenText: (id)sender;
 - (IBAction) openPreferencesWindow: (id)sender;
 - (void) newConnectionWithSite: (YLSite *)site;

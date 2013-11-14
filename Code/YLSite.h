@@ -12,6 +12,9 @@
 @interface YLSite : NSObject {
     NSString *_name;
     NSString *_address;
+    NSString *_account;
+    NSString *_password;
+
     YLEncoding _encoding;
     YLANSIColorKey _ansiColorKey;
     BOOL _detectDoubleByte;
@@ -23,6 +26,8 @@
 
 @property (copy) NSString *name;
 @property (copy) NSString *address;
+@property (copy) NSString *account;
+@property (copy) NSString *password;
 @property YLEncoding encoding;
 @property YLANSIColorKey ansiColorKey;
 @property BOOL detectDoubleByte;

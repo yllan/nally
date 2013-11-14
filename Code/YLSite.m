@@ -32,6 +32,10 @@
     YLSite *s = [[[YLSite alloc] init] autorelease];
     [s setName: [dict valueForKey: @"name"] ?: @""];
     [s setAddress: [dict valueForKey: @"address"] ?: @""];
+    [s setAccount: [dict valueForKey: @"account"] ?: @""];
+    [s setPassword: [dict valueForKey: @"password"] ?: @""];
+
+    
     [s setEncoding: (YLEncoding)[[dict valueForKey: @"encoding"] unsignedShortValue]];
     [s setAnsiColorKey: (YLANSIColorKey)[[dict valueForKey: @"ansicolorkey"] unsignedShortValue]];
     [s setDetectDoubleByte: [[dict valueForKey: @"detectdoublebyte"] boolValue]];
@@ -45,7 +49,6 @@
             [NSNumber numberWithUnsignedShort: [self ansiColorKey]], @"ansicolorkey", 
             [NSNumber numberWithBool: [self detectDoubleByte]], @"detectdoublebyte", nil];
 }
-
 @synthesize name = _name;
 @synthesize address = _address;
 @synthesize encoding = _encoding;
@@ -64,6 +67,8 @@
     [s setEncoding: [self encoding]];
     [s setAnsiColorKey: [self ansiColorKey]];
     [s setDetectDoubleByte: [self detectDoubleByte]];
+    [s setAccount:[self account]];
+    [s setPassword:[self password]];
     return s;
 }
 
