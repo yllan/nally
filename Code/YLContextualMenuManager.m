@@ -160,6 +160,8 @@ static YLContextualMenuManager *gSharedInstance;
     } else if ([shortURL hasPrefix: @"mid="] && [shortURL length] <= 12 && isAllDigit([shortURL substringFromIndex: 4])) {
         addShortenedURLMenuItem([@"pixiv_member/" stringByAppendingString: [shortURL substringFromIndex: 4]],
                                 [@"http://www.pixiv.net/member.php?id=" stringByAppendingString: [shortURL substringFromIndex: 4]]);
+    } else if ([shortURL hasSuffix:@".jpg"] || [shortURL hasSuffix:@".jpeg"]) {
+        addShortenedURLMenuItem(@"Image search by GOOGLE", [@"https://www.google.com/searchbyimage?&image_url=" stringByAppendingString: shortURL]);
     } else if ([shortURL length] == 4) {
         addShortenedURLMenuItem([@"ppt.cc/" stringByAppendingString: shortURL],
                                 [@"http://ppt.cc/" stringByAppendingString: shortURL]);
