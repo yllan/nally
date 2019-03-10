@@ -70,6 +70,7 @@
 - (IBAction) openEmoticonsWindow: (id)sender;
 
 - (YLExifController *) exifController;
+- (id) telnetView;
 
 - (NSArray *) sites;
 - (unsigned) countOfSites;

@@ -659,6 +659,11 @@
     return _exifController;
 }
 
+- (id)telnetView {
+    return _telnetView;
+}
+
+
 #pragma mark -
 #pragma mark Application Delegation
 - (BOOL) validateMenuItem: (NSMenuItem *)item

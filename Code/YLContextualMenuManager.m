@@ -7,6 +7,7 @@
 //
 
 #import "YLContextualMenuManager.h"
+#import "YLController.h"
 
 static YLContextualMenuManager *gSharedInstance;
 
@@ -263,8 +264,8 @@ static YLContextualMenuManager *gSharedInstance;
     
     NSString* tinyurlResult = [[NSString alloc]initWithData:responseData encoding:NSUTF8StringEncoding];
     
-    NSLog(@"Tinyurl response : %@", tinyurlResult);
-
+    YLController *controller = [NSApp delegate];
+    [[controller telnetView] insertText:tinyurlResult];
 }
 
 @end
