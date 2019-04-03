@@ -7,6 +7,7 @@
 //
 
 #import "YLContextualMenuManager.h"
+#import "YLController.h"
 
 static YLContextualMenuManager *gSharedInstance;
 
@@ -160,6 +161,8 @@ static YLContextualMenuManager *gSharedInstance;
     } else if ([shortURL hasPrefix: @"mid="] && [shortURL length] <= 12 && isAllDigit([shortURL substringFromIndex: 4])) {
         addShortenedURLMenuItem([@"pixiv_member/" stringByAppendingString: [shortURL substringFromIndex: 4]],
                                 [@"http://www.pixiv.net/member.php?id=" stringByAppendingString: [shortURL substringFromIndex: 4]]);
+    } else if ([shortURL hasSuffix:@".jpg"] || [shortURL hasSuffix:@".jpeg"]) {
+        addShortenedURLMenuItem(@"Image search by GOOGLE", [@"https://www.google.com/searchbyimage?&image_url=" stringByAppendingString: shortURL]);
     } else if ([shortURL length] == 4) {
         addShortenedURLMenuItem([@"ppt.cc/" stringByAppendingString: shortURL],
                                 [@"http://ppt.cc/" stringByAppendingString: shortURL]);
@@ -186,6 +189,20 @@ static YLContextualMenuManager *gSharedInstance;
         [item setTarget: [[NSApp keyWindow] firstResponder]];
         [item setRepresentedObject: selectedString];
         [items addObject: item];
+    } else {
+        // selectedString length == 0
+        //NSPasteboardTypeUrl is supported after 10.13, so use String to compitiable 10.12
+        NSString* clippedString = [[NSPasteboard generalPasteboard] stringForType:NSPasteboardTypeString];
+        NSURL *url = [NSURL URLWithString:clippedString];
+        if (url && url.scheme && url.host)
+        {
+            NSLog(@"%@ is a valid URL", clippedString);
+            item = [[[NSMenuItem alloc] initWithTitle: NSLocalizedString(@"Paste tinyurl", @"Menu") action: @selector(tinyurl:) keyEquivalent: @""] autorelease];
+            [item setTarget: self];
+            [item setRepresentedObject:clippedString];
+            [items addObject:item];
+        }
+
     }
     return items;
 }
@@ -226,6 +243,29 @@ static YLContextualMenuManager *gSharedInstance;
     [spb setString: u forType: NSStringPboardType];
     NSPerformService(@"Look Up in Dictionary", spb);
     
+}
+
+- (IBAction) tinyurl: (id)sender
+{
+    NSString *u = [sender representedObject];
+    NSString* APIRequestString = [@"http://tinyurl.com/api-create.php?url=" stringByAppendingString:u];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:APIRequestString]];
+    [request setHTTPMethod:@"GET"];
+    NSError *error = nil;
+    NSHTTPURLResponse *responseCode = nil;
+    
+    NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&responseCode error:&error];
+
+    if([responseCode statusCode] != 200){
+        NSLog(@"Error getting %@, HTTP status code %li", APIRequestString, (long)[responseCode statusCode]);
+        return;
+    }
+    
+    NSString* tinyurlResult = [[NSString alloc]initWithData:responseData encoding:NSUTF8StringEncoding];
+    
+    YLController *controller = [NSApp delegate];
+    [[controller telnetView] insertText:tinyurlResult];
 }
 
 @end
